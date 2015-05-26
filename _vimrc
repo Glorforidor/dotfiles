@@ -1,20 +1,3 @@
-set encoding=utf-8 nobomb
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=*.swp,*~,._*
-set number
-set relativenumber
-set tabstop=4
-set shiftwidth=4
-set expandtab
-set softtabstop=4
-set eol
-set wildmenu
-color molokai
-let g:rehash256 = 1
-execute pathogen#infect()
-
 source $VIMRUNTIME/vimrc_example.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
@@ -44,27 +27,11 @@ function MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
-" Use Vim settings, rather than Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
-set nocompatible
-
-" allow backspacing over everything in insert mode
-set backspace=indent,eol,start
-set autoread
-set autochdir
-
 if has("vms")
   set nobackup      " do not keep a backup file, use versions instead
 else
   set backup        " keep a backup file
 endif
-set history=1000    " keep 50 lines of command line history
-set ruler           " show the cursor position all the time
-set showcmd         " display incomplete commands
-set incsearch       " do incremental searching
-
-" For Win32 GUI: remove 't' flag from 'guioptions': no tearoff menu entries
-" let &guioptions = substitute(&guioptions, "t", "", "g")
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
@@ -83,8 +50,6 @@ endif
 if &t_Co > 2 || has("gui_running")
     set title
     syntax on
-    set hlsearch!
-    nnoremap <F3> :set hlsearch!<CR>
 
     if has("gui_gtk2")
         set guifont=Inconsolata\ 12
@@ -135,6 +100,63 @@ if !exists(":DiffOrig")
         \ | wincmd p | diffthis
 endif
 
+" Inject pathogen manager
+execute pathogen#infect()
+
+" Initial setup
+set nocompatible
+set encoding=utf-8 nobomb
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*.swp,*~,._*
+
+" Set numbering
+set number
+set relativenumber
+
+" Set style for tabs and spaces
+set tabstop=4
+set shiftwidth=4
+set expandtab
+set softtabstop=4
+
+" Insure end of line
+set eol
+
+" Better cmd autocomplete
+set wildmenu
+
+" Show where cursor is
+set cursorline
+set ruler
+
+" Remember commands
+set history=1000
+set showcmd
+
+" Search
+set hlsearch!
+set incsearch
+
+" Color
+color molokai
+let g:rehash256 = 1
+
+" Auto read file and change directory
+set autoread
+set autochdir
+
+" allow backspacing over everything in insert mode
+set backspace=indent,eol,start
+
+" Always show status
+set laststatus=2
+
+" Better wrapping
+set wrap linebreak
+set showbreak=" "
+
 " NerdTree
 map <Leader>k :NERDTreeToggle<CR>
 
@@ -149,10 +171,6 @@ let g:ctrlp_clear_cache_on_exit=0
 " Airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-"let g:airline_section_b=''
-"let g:airline_section_x=''
-"let g:airline_section_y=''
-set laststatus=2
 
 " Gondo
 nnoremap <F5> :GundoToggle<CR>
@@ -162,7 +180,8 @@ let g:SuperTabMappingForward = '<c-space>'
 let g:SuperTabMappingBackward = '<s-c-space>'
 "let g:SuperTabDefaultCompletionType = "context"
 
-" Reasonable defaults
+
+" Key bindings
 no <down> <Nop>
 no <left> <Nop>
 no <right> <Nop>
@@ -187,14 +206,11 @@ imap <C-S-Tab> <ESC>:tabprevious<CR>
 
 nnoremap Y y$
 
-" Better vertical movement
+nnoremap <F3> :set hlsearch!<CR>
+
 noremap j gj
 noremap k gk
 
-" Stay in visual mode when indenting
 vnoremap < <gv
 vnoremap > >gv
 
-" Better wrapping
-set wrap linebreak
-set showbreak=" "
