@@ -63,10 +63,7 @@ endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-    " Enable file type detection
-    filetype on
-
-    " Enable file type indention.
+    " Enable filetype
     filetype plugin indent on
 
     " For all text files set 'textwidth' to 79 characters.
@@ -180,22 +177,21 @@ let g:SuperTabMappingForward = '<c-space>'
 let g:SuperTabMappingBackward = '<s-c-space>'
 "let g:SuperTabDefaultCompletionType = "context"
 
-
 " Key bindings
-no <down> <Nop>
-no <left> <Nop>
-no <right> <Nop>
-no <up> <Nop>
+noremap <down> <Nop>
+noremap <left> <Nop>
+noremap <right> <Nop>
+noremap < <up> <Nop>
 
-ino <down> <Nop>
-ino <left> <Nop>
-ino <right> <Nop>
-ino <up> <Nop>
+inoremap <down> <Nop>
+inoremap <left> <Nop>
+inoremap <right> <Nop>
+inoremap <up> <Nop>
 
-vno <down> <Nop>
-vno <left> <Nop>
-vno <right> <Nop>
-vno <up> <Nop>
+vnoremap <down> <Nop>
+vnoremap <left> <Nop>
+vnoremap <right> <Nop>
+vnoremap <up> <Nop>
 
 nmap <C-Tab> :tabnext<CR>
 nmap <C-S-Tab> :tabprevious<CR>
@@ -214,3 +210,7 @@ noremap k gk
 vnoremap < <gv
 vnoremap > >gv
 
+" Easy pasting
+vnoremap <C-c> "*y
+vnoremap <C-x> "*x
+nnoremap <C-v> "*gp
