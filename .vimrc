@@ -52,7 +52,7 @@ if &t_Co > 2 || has("gui_running")
     elseif has("gui_macvim")
         set guifont=Menlo\ Regular:h14
     elseif has("gui_win32")
-        set guifont=Inconsolata:h16
+        set guifont=Ubuntu\ Mono:h16
         set antialias
     endif
 endif
