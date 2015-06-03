@@ -1,40 +1,8 @@
-set diffexpr=MyDiff()
-function MyDiff()
-    let opt = '-a --binary '
-    if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-    if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-    let arg1 = v:fname_in
-    if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-    let arg2 = v:fname_new
-    if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-    let arg3 = v:fname_out
-    if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-    let eq = ''
-    if $VIMRUNTIME =~ ' '
-        if &sh =~ '\<cmd'
-            let cmd = '""' . $VIMRUNTIME . '\diff"'
-            let eq = '"'
-        else
-            let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-        endif
-    else
-        let cmd = $VIMRUNTIME . '\diff'
-    endif
-    silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
-
 if has("vms")
   set nobackup      " do not keep a backup file, use versions instead
 else
   set backup        " keep a backup file
 endif
-
-" Don't use Ex mode, use Q for formatting
-map Q gq
-
-" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
-" so that you can undo CTRL-U after inserting a line break.
-inoremap <C-U> <C-G>u<C-U>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
@@ -74,24 +42,7 @@ if has("autocmd")
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
     \   exe "normal! g`\"" |
     \ endif
-
-    " Round indent
-    set shiftround
-else
-    " always set autoindenting on
-    set autoindent
-
-    " Round indent
-    set shiftround
 endif " has("autocmd")
-
-" Convenient command to see the difference between the current buffer and the
-" file it was loaded from, thus the changes you made.
-" Only define it when not defined already.
-if !exists(":DiffOrig")
-    command DiffOrig vert new | set bt=nofile | r ++edit # | 0d_ | diffthis
-        \ | wincmd p | diffthis
-endif
 
 " Inject pathogen manager
 execute pathogen#infect()
@@ -103,6 +54,12 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=*.swp,*~,._*
+
+" always set autoindenting on
+set autoindent
+
+" Round indent
+set shiftround
 
 " Set numbering
 set number
@@ -173,32 +130,28 @@ let g:SuperTabMappingForward = '<c-space>'
 let g:SuperTabMappingBackward = '<s-c-space>'
 "let g:SuperTabDefaultCompletionType = "context"
 
-
 " Key bindings
-noremap <down> <Nop>
+noremap <up> ddkP
+noremap <down> ddp
 noremap <left> <Nop>
 noremap <right> <Nop>
-noremap <up> <Nop>
-
+inoremap <up> <Nop>
 inoremap <down> <Nop>
 inoremap <left> <Nop>
 inoremap <right> <Nop>
-inoremap <up> <Nop>
-
+vnoremap <up> <Nop>
 vnoremap <down> <Nop>
 vnoremap <left> <Nop>
 vnoremap <right> <Nop>
-vnoremap <up> <Nop>
 
-nmap <C-Tab> :tabnext<CR>
-nmap <C-S-Tab> :tabprevious<CR>
-map <C-Tab> :tabnext<CR>
-map <C-S-Tab> :tabprevious<CR>
-imap <C-Tab> <ESC>:tabnext<CR>
-imap <C-S-Tab> <ESC>:tabprevious<CR>
+noremap <C-Tab> :tabnext<CR>
+noremap <C-S-Tab> :tabprevious<CR>
+inoremap <C-Tab> <ESC>:tabnext<CR>
+inoremap <C-S-Tab> <ESC>:tabprevious<CR>
+vnoremap <C-Tab> :tabnext<CR>
+vnoremap <C-S-Tab> :tabprevious<CR>
 
 nnoremap Y y$
-
 nnoremap <F3> :set hlsearch!<CR>
 
 noremap j gj
@@ -211,4 +164,11 @@ vnoremap > >gv
 vnoremap <C-c> "*y
 vnoremap <C-x> "*x
 nnoremap <C-v> "*gp
+
+" Don't use Ex mode, use Q for formatting
+map Q gq
+
+" CTRL-U in insert mode deletes a lot.  Use CTRL-G u to first break undo,
+" so that you can undo CTRL-U after inserting a line break.
+inoremap <C-U> <C-G>u<C-U>
 
