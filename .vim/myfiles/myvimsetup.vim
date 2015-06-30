@@ -1,20 +1,10 @@
-if has("vms")
-  set nobackup      " do not keep a backup file, use versions instead
-else
-  set backup        " keep a backup file
-endif
-
 " In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
 endif
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
+" Setting up font for different guis
 if &t_Co > 2 || has("gui_running")
-    set title
-    syntax on
-
     if has("gui_gtk2")
         set guifont=Inconsolata\ 12
     elseif has("gui_macvim")
@@ -27,13 +17,6 @@ endif
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
-    " Enable filetype
-    filetype plugin indent on
-    " Enable omni completion
-    "set omnifunc=syntaxcomplete#Complete
-    " For all text files set 'textwidth' to 79 characters.
-    autocmd FileType text setlocal textwidth=79
-
     " When editing a file, always jump to the last known cursor position.
     " Don't do it when the position is invalid or when inside an event handler
     " (happens when dropping a file on gvim).
@@ -47,21 +30,29 @@ endif " has("autocmd")
 
 " Initial setup
 set nocompatible
+
+" Display
+set title
 set encoding=utf-8 nobomb
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=*.swp,*~,._*
+set showcmd
+set showmode
+set showmatch
+set cursorline
+set ruler
+
+" Set numbering
+set number
+set relativenumber
+
+" Enable filetype and syntax
+syntax enable
+filetype plugin indent on
 
 " always set autoindenting on
 set autoindent
 
 " Round indent
 set shiftround
-
-" Set numbering
-set number
-set relativenumber
 
 " Set style for tabs and spaces
 set tabstop=4
@@ -74,14 +65,15 @@ set eol
 
 " Better cmd autocomplete
 set wildmenu
-
-" Show where cursor is
-set cursorline
-set ruler
+set wildmode=list:full
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
+set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
+set wildignore+=*.swp,*~,._*
+set completeopt=longest,menu,preview
 
 " Remember commands
 set history=1000
-set showcmd
 
 " Undo
 set undolevels=1000
@@ -89,10 +81,13 @@ set undolevels=1000
 " Search
 set hlsearch!
 set incsearch
+set ignorecase
+set smartcase
 
 " Color
 color molokai
 let g:rehash256 = 1
+set t_Co=256
 
 " Auto read file and change directory
 set autoread
@@ -111,3 +106,8 @@ set showbreak=" "
 " Windows setup...
 set shellslash
 
+" Textwidth
+set textwidth=80
+
+" TTY behavior
+set ttyfast
