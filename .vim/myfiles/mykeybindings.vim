@@ -1,4 +1,4 @@
-" Key bindings
+" Remove pesky arrow keys but keep up and down for special use 
 noremap <up> ddkP
 noremap <down> ddp
 noremap <left> <Nop>
@@ -12,6 +12,7 @@ vnoremap <down> <Nop>
 vnoremap <left> <Nop>
 vnoremap <right> <Nop>
 
+" Better tabs setting
 noremap <C-Tab> :tabnext<CR>
 noremap <C-S-Tab> :tabprevious<CR>
 inoremap <C-Tab> <ESC>:tabnext<CR>
@@ -19,12 +20,20 @@ inoremap <C-S-Tab> <ESC>:tabprevious<CR>
 vnoremap <C-Tab> :tabnext<CR>
 vnoremap <C-S-Tab> :tabprevious<CR>
 
+" Split lines
+nnoremap K i<CR><ESC>
+
+" Better yanking
 nnoremap Y y$
+
+" Toggle highlight search on/off
 nnoremap <F3> :set hlsearch!<CR>
 
+" Better navigation
 noremap j gj
 noremap k gk
 
+" Better indention
 vnoremap < <gv
 vnoremap > >gv
 
