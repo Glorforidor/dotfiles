@@ -1,7 +1,7 @@
 " Inject pathogen manager
 execute pathogen#infect()
 execute pathogen#helptags()
-source myfiles/myvimsetup.vim
-source myfiles/mypluginsettings.vim
-source myfiles/mykeybindings.vim
+source ~/.vim/myfiles/myvimsetup.vim
+source ~/.vim/myfiles/mypluginsettings.vim
+source ~/.vim/myfiles/mykeybindings.vim
 
