@@ -4,7 +4,7 @@ git submodule update
 #Sleep for a bit.
 sleep 2
 cp -r .vim .vimrc ~/
-wget -O ~/Downloads/go.tar.gz https://storage.googleapis.com/golang/go1.5rc1.linux-amd64.tar.gz
+wget -O ~/Downloads/go.tar.gz https://storage.googleapis.com/golang/go1.5.linux-amd64.tar.gz
 #Sleep for a bit.
 sleep 2
 sudo tar -C /usr/local -xzvf ~/Downloads/go.tar.gz
