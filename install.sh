@@ -12,5 +12,5 @@ mkdir -p ~/Programming/Go/bin
 mkdir -p ~/Programming/Go/pkg
 mkdir -p ~/Programming/Go/src
 echo "export PATH=\$PATH:/usr/local/go/bin" >> ~/.profile
-echo "export GOPATH=~/Programming/Go" >> ~/.profile
+echo "export GOPATH=\$HOME/Programming/Go" >> ~/.profile
 
