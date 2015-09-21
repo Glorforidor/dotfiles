@@ -30,6 +30,7 @@ endif " has("autocmd")
 
 " Initial setup
 set nocompatible
+set modifiable
 
 " Display
 set title
