@@ -104,9 +104,6 @@ set laststatus=2
 set wrap linebreak
 set showbreak=" "
 
-" Windows setup...
-set shellslash
-
 " Textwidth
 set textwidth=80
 
