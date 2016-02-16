@@ -43,7 +43,6 @@ set ruler
 
 " Set numbering
 set number
-set relativenumber
 
 " Enable filetype and syntax
 syntax enable
