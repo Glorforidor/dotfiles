@@ -25,3 +25,5 @@ let g:SuperTabMappingForward = '<c-space>'
 let g:SuperTabMappingBackward = '<s-c-space>'
 "let g:SuperTabDefaultCompletionType = "context"
 
+" Syntastic
+let g:syntastic_python_python_exec = '/usr/bin/python3'
