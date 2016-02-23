@@ -44,9 +44,10 @@ set ruler
 " Set numbering
 set number
 
-" Enable filetype and syntax
+" Enable filetype, syntax and autocomplete
 syntax enable
 filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
 
 " always set autoindenting on
 set autoindent
