@@ -48,6 +48,7 @@ set number
 syntax enable
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
+set complete-=i
 
 " always set autoindenting on
 set autoindent
@@ -60,6 +61,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set softtabstop=4
+set smarttab
 
 " Insure end of line
 set eol
@@ -109,3 +111,7 @@ set textwidth=80
 
 " TTY behavior
 set ttyfast
+
+" Timeout
+set ttimeout
+set ttimeoutlen=100
