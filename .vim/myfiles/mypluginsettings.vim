@@ -37,5 +37,5 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 " Vim-Go fixes with Syntastic 
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
+"let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+"let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
