@@ -45,7 +45,7 @@ set ruler
 set number
 
 " Enable filetype, syntax and autocomplete
-syntax enable
+syntax off
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set complete-=i
