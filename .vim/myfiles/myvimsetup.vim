@@ -49,6 +49,7 @@ syntax off
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set complete-=i
+set completeopt=longest,menu
 
 " always set autoindenting on
 set autoindent
@@ -73,7 +74,6 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=*.swp,*~,._*
-set completeopt=longest,menu,preview
 
 " Remember commands
 set history=1000
