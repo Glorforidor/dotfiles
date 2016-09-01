@@ -2,14 +2,6 @@
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 
-" CtrlP
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_mruf_max=250
-let g:ctrlp_use_caching=1
-let g:ctrlp_clear_cache_on_exit=0
-
 " Goyo and Limelight
 autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
@@ -37,3 +29,7 @@ let g:go_highlight_build_constraints = 1
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = "quickfix"
+
+" Vim-racer
+let g:racer_cmd="/home/pbj/.cargo/bin/racer"
+let $RUST_SRC_PATH="/usr/local/src/rustc-1.11.0/src"
