@@ -20,9 +20,6 @@ inoremap <C-S-Tab> <ESC>:tabprevious<CR>
 vnoremap <C-Tab> :tabnext<CR>
 vnoremap <C-S-Tab> :tabprevious<CR>
 
-" Split lines
-nnoremap K i<CR><ESC>
-
 " Better yanking
 nnoremap Y y$
 
@@ -36,11 +33,6 @@ noremap k gk
 " Better indention
 vnoremap < <gv
 vnoremap > >gv
-
-" Easy pasting
-vnoremap <C-c> "*y
-vnoremap <C-x> "*x
-nnoremap <C-v> "*gp
 
 " Don't use Ex mode, use Q for formatting
 map Q gq
