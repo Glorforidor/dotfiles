@@ -40,7 +40,7 @@ let g:rustfmt_autosave = 1
 
 " Vim-racer
 let g:racer_cmd="/home/pbj/.cargo/bin/racer"
-let $RUST_SRC_PATH="/usr/local/src/rustc-1.11.0/src"
+let $RUST_SRC_PATH="/usr/local/src/rust/src"
 
 " jedi-vim
 let g:jedi#completions_command = ""
