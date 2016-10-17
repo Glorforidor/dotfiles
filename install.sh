@@ -17,12 +17,12 @@ sleep 2
 
 # Setup Golang
 sudo tar -C /usr/local -xzvf $HOME/Downloads/go.tar.gz
-mkdir -p $HOME/Programming/Go/bin
-mkdir -p $HOME/Programming/Go/pkg
-mkdir -p $HOME/Programming/Go/src
+mkdir -p $HOME/programming/go/bin
+mkdir -p $HOME/programming/go/pkg
+mkdir -p $HOME/programming/go/src
 echo "# set Go" >> $HOME/.profile
 echo "export PATH=\$PATH:/usr/local/go/bin" >> $HOME/.profile
-echo "export GOPATH=\$HOME/Programming/Go" >> $HOME/.profile
+echo "export GOPATH=\$HOME/programming/go" >> $HOME/.profile
 echo "export PATH=\$PATH:\$GOPATH/bin" >> $HOME/.profile
 echo "" >> $HOME/.profile
 
