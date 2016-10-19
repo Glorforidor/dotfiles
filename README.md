@@ -1,4 +1,9 @@
 # dotfiles
+
+---
+
 This is my awesome setup repo!
 
-Feel free to use it on **your own risk!** :stuck_out_tongue:
+Feel free to use it at **your own risk!** :stuck_out_tongue:
+
+---
