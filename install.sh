@@ -36,7 +36,7 @@ echo "export PATH=\$PATH:\$RUSTBIN" >> $HOME/.profile
 echo "" >> $HOME/.profile
 
 # Download Google App Engine
-wget -O $HOME/Downloads/goappengine.zip https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-1.9.40.zip
+wget -O $HOME/Downloads/goappengine.zip https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-1.9.46.zip
 
 # Sleep for a bit
 sleep 2
