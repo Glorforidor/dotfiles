@@ -22,6 +22,7 @@ let g:syntastic_check_on_wq = 0
 
 " Vim-Go
 let g:go_fmt_command = "goimports"
+" let g:go_auto_type_info = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -40,7 +41,7 @@ let g:rustfmt_autosave = 1
 
 " Vim-racer
 let g:racer_cmd="/home/pbj/.cargo/bin/racer"
-let $RUST_SRC_PATH="/usr/local/src/rust/src"
+let $RUST_SRC_PATH="/home/pbj/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
 
 " jedi-vim
 let g:jedi#completions_command = ""
