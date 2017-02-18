@@ -66,9 +66,3 @@ echo "export PATH=\$PATH:\$HOME/go_appengine" >> $HOME/.profile
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 cp -r .zshrc $HOME/
-
-// Exit OhMyZsh to stop install.
-exit
-
-echo "Install now finished!"
-echo "Relogin to take effect."
