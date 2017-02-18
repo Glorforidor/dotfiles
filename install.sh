@@ -1,4 +1,20 @@
 #!/bin/bash
+
+# Install programs
+
+if [ "$ZSH_VERSION" == '' ]; then
+    sudo apt install zsh
+    chsh -s /bin/zsh
+fi
+
+if [ ! -f /usr/bin/curl ]; then
+    sudo apt install curl
+fi
+
+if [ "$TMUX" == '' ]; then
+    sudo apt install tmux
+fi
+
 # Setup Vim and Tmux
 git submodule init
 git submodule update
@@ -7,10 +23,6 @@ git submodule update
 sleep 2
 
 cp -r .vim .vimrc $HOME/
-
-if [ "$TMUX" == '' ]; then
-    sudo apt install tmux
-fi
 cp -r .tmux .tmux.conf $HOME/
 
 # Download Golang
@@ -31,7 +43,7 @@ echo "export PATH=\$PATH:\$GOPATH/bin" >> $HOME/.profile
 echo "" >> $HOME/.profile
 
 # Download Rust
-curl -sSf https://static.rust-lang.org/rustup.sh | sh
+curl https://sh.rustup.rs -sSf | sh
 
 # Setup Rust
 echo "# set Rust" >> $HOME/.profile
@@ -50,10 +62,6 @@ unzip $HOME/Downloads/goappengine.zip -d $HOME/
 echo "# set google app engine for go" >> $HOME/.profile
 echo "export PATH=\$PATH:\$HOME/go_appengine" >> $HOME/.profile
 
-if [ "$ZSH_VERSION" == '' ]; then
-    sudo apt install zsh
-    chsh -s /bin/zsh
-fi
 # Install Oh My Zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
@@ -61,3 +69,6 @@ cp -r .zshrc $HOME/
 
 // Exit OhMyZsh to stop install.
 exit
+
+echo "Install now finished!"
+echo "Relogin to take effect."
