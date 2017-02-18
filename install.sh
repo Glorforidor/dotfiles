@@ -6,13 +6,12 @@ git submodule update
 # Sleep for a bit.
 sleep 2
 
-# Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-
-cp -r .zshrc $HOME/
 cp -r .vim .vimrc $HOME/
-cp -r .tmux .tmux.conf $HOME/
 
+if [ "$TMUX" == '' ]; then
+    sudo apt install tmux
+fi
+cp -r .tmux .tmux.conf $HOME/
 
 # Download Golang
 wget -O $HOME/Downloads/go.tar.gz https://storage.googleapis.com/golang/go1.8.linux-amd64.tar.gz
@@ -51,3 +50,14 @@ unzip $HOME/Downloads/goappengine.zip -d $HOME/
 echo "# set google app engine for go" >> $HOME/.profile
 echo "export PATH=\$PATH:\$HOME/go_appengine" >> $HOME/.profile
 
+if [ "$ZSH_VERSION" == '' ]; then
+    sudo apt install zsh
+    chsh -s /bin/zsh
+fi
+# Install Oh My Zsh
+sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+
+cp -r .zshrc $HOME/
+
+// Exit OhMyZsh to stop install.
+exit
