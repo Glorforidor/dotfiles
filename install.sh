@@ -2,7 +2,7 @@
 
 # Install programs
 
-if [ "$ZSH_VERSION" == '' ]; then
+if [ ! -f /bin/zsh ]; then
     sudo apt install zsh
     chsh -s /bin/zsh
 fi
@@ -11,7 +11,7 @@ if [ ! -f /usr/bin/curl ]; then
     sudo apt install curl
 fi
 
-if [ "$TMUX" == '' ]; then
+if [ ! -f /usr/bin/tmux ]; then
     sudo apt install tmux
 fi
 
