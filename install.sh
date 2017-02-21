@@ -36,20 +36,20 @@ sudo tar -C /usr/local -xzvf $HOME/Downloads/go.tar.gz
 mkdir -p $HOME/programming/go/bin
 mkdir -p $HOME/programming/go/pkg
 mkdir -p $HOME/programming/go/src
-echo "# set Go" >> $HOME/.profile
-echo "export PATH=\$PATH:/usr/local/go/bin" >> $HOME/.profile
-echo "export GOPATH=\$HOME/programming/go" >> $HOME/.profile
-echo "export PATH=\$PATH:\$GOPATH/bin" >> $HOME/.profile
-echo "" >> $HOME/.profile
+echo '# set Go 
+export PATH=\$PATH:/usr/local/go/bin
+export GOPATH=\$HOME/programming/go
+export PATH=\$PATH:\$GOPATH/bin
+' >> $HOME/.profile
 
 # Download Rust
 curl https://sh.rustup.rs -sSf | sh
 
 # Setup Rust
-echo "# set Rust" >> $HOME/.profile
-echo "export RUSTBIN=\$HOME/.cargo/bin" >> $HOME/.profile
-echo "export PATH=\$PATH:\$RUSTBIN" >> $HOME/.profile
-echo "" >> $HOME/.profile
+echo '# set Rust
+export RUSTBIN=\$HOME/.cargo/bin
+export PATH=\$PATH:\$RUSTBIN
+' >> $HOME/.profile
 
 # Download Google App Engine
 wget -O $HOME/Downloads/goappengine.zip https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-1.9.48.zip
@@ -59,8 +59,9 @@ sleep 2
 
 # Setup Google App Engine
 unzip $HOME/Downloads/goappengine.zip -d $HOME/
-echo "# set google app engine for go" >> $HOME/.profile
-echo "export PATH=\$PATH:\$HOME/go_appengine" >> $HOME/.profile
+echo '# set google app engine for go
+PATH=\$PATH:\$HOME/go_appengine" 
+' >> $HOME/.profile
 
 # Install Oh My Zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
