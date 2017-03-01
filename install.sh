@@ -36,7 +36,7 @@ sudo tar -C /usr/local -xzvf $HOME/Downloads/go.tar.gz
 mkdir -p $HOME/programming/go/bin
 mkdir -p $HOME/programming/go/pkg
 mkdir -p $HOME/programming/go/src
-echo '# set Go 
+echo '# set Go
 export PATH=\$PATH:/usr/local/go/bin
 export GOPATH=\$HOME/programming/go
 export PATH=\$PATH:\$GOPATH/bin
@@ -60,7 +60,7 @@ sleep 2
 # Setup Google App Engine
 unzip $HOME/Downloads/goappengine.zip -d $HOME/
 echo '# set google app engine for go
-PATH=\$PATH:\$HOME/go_appengine" 
+PATH=\$PATH:\$HOME/go_appengine
 ' >> $HOME/.profile
 
 # Install Oh My Zsh
