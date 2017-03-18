@@ -115,3 +115,6 @@ set ttyfast
 " Timeout
 set ttimeout
 set ttimeoutlen=100
+
+" Strange spaces!
+set nojoinspaces
