@@ -1,10 +1,13 @@
 " Airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
+colorscheme onedark
 
 " Goyo and Limelight
 autocmd User GoyoEnter Limelight
 autocmd User GoyoLeave Limelight!
+let g:limelight_conceal_ctermfg = 'gray'
+let g:limelight_conceal_ctermfg = 240
 
 " Nerdcommenter
 let g:NERDSpaceDelims = 1
