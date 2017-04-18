@@ -4,7 +4,6 @@
 
 if [ ! -f /bin/zsh ]; then
     sudo apt install zsh
-    chsh -s /bin/zsh
 fi
 
 if [ ! -f /usr/bin/curl ]; then
@@ -37,19 +36,13 @@ mkdir -p $HOME/programming/go/bin
 mkdir -p $HOME/programming/go/pkg
 mkdir -p $HOME/programming/go/src
 echo '# set Go
-export PATH=\$PATH:/usr/local/go/bin
-export GOPATH=\$HOME/programming/go
-export PATH=\$PATH:\$GOPATH/bin
+export PATH="$PATH:/usr/local/go/bin"
+export GOPATH="$HOME/programming/go"
+export PATH="$PATH:$GOPATH/bin"
 ' >> $HOME/.profile
 
 # Download Rust
 curl https://sh.rustup.rs -sSf | sh
-
-# Setup Rust
-echo '# set Rust
-export RUSTBIN=\$HOME/.cargo/bin
-export PATH=\$PATH:\$RUSTBIN
-' >> $HOME/.profile
 
 # Download Google App Engine
 wget -O $HOME/Downloads/goappengine.zip https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-1.9.48.zip
@@ -60,7 +53,7 @@ sleep 2
 # Setup Google App Engine
 unzip $HOME/Downloads/goappengine.zip -d $HOME/
 echo '# set google app engine for go
-PATH=\$PATH:\$HOME/go_appengine
+export PATH="$PATH:$HOME/go_appengine"
 ' >> $HOME/.profile
 
 # Install Oh My Zsh
