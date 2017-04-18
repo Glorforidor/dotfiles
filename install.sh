@@ -26,7 +26,7 @@ cp -r .vim .vimrc $HOME/
 cp -r .tmux .tmux.conf $HOME/
 
 # Download Golang
-wget -O $HOME/Downloads/go.tar.gz https://storage.googleapis.com/golang/go1.8.linux-amd64.tar.gz
+wget -O $HOME/Downloads/go.tar.gz https://storage.googleapis.com/golang/go1.8.1.linux-amd64.tar.gz
 
 # Sleep for a bit.
 sleep 2
