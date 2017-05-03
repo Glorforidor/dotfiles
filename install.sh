@@ -42,6 +42,7 @@ export PATH="$PATH:$GOPATH/bin"
 ' >> $HOME/.profile
 
 # Download Rust
+echo '# set Rust'
 curl https://sh.rustup.rs -sSf | sh
 
 # Download Google App Engine
