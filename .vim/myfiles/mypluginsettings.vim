@@ -25,7 +25,7 @@ let g:syntastic_check_on_wq = 0
 
 " Vim-Go
 let g:go_fmt_command = "goimports"
-" let g:go_auto_type_info = 1
+let g:go_auto_type_info = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
