@@ -3,15 +3,15 @@
 # Install programs
 
 if [ ! -f /bin/zsh ]; then
-    sudo apt install zsh
+    sudo apt-get install zsh
 fi
 
 if [ ! -f /usr/bin/curl ]; then
-    sudo apt install curl
+    sudo apt-get install curl
 fi
 
 if [ ! -f /usr/bin/tmux ]; then
-    sudo apt install tmux
+    sudo apt-get install tmux
 fi
 
 # Setup Vim and Tmux
