@@ -35,7 +35,8 @@ let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 
 " Vim-Go fixes with Syntastic
-let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
+let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter']
+let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = "quickfix"
 
@@ -48,3 +49,6 @@ let $RUST_SRC_PATH="/home/pbj/.rustup/toolchains/stable-x86_64-unknown-linux-gnu
 
 " jedi-vim
 let g:jedi#completions_command = ""
+let g:jedi#show_call_signatures = "0"
+let g:jedi#popup_on_dot = 0
+let g:jedi#auto_close_doc = 0

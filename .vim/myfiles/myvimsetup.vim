@@ -49,7 +49,7 @@ syntax off
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set complete-=i
-set completeopt=longest,menu
+set completeopt=longest,menuone,preview
 
 " always set autoindenting on
 set autoindent
