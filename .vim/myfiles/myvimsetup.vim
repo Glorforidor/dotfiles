@@ -88,7 +88,6 @@ set ignorecase
 set smartcase
 
 " Color
-color molokai
 let g:rehash256 = 1
 set t_Co=256
 
