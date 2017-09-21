@@ -52,3 +52,4 @@ let g:jedi#completions_command = ""
 let g:jedi#show_call_signatures = "0"
 let g:jedi#popup_on_dot = 0
 let g:jedi#auto_close_doc = 0
+let g:jedi#force_py_version=3
