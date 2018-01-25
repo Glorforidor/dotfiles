@@ -25,9 +25,6 @@
 [submodule ".vim/bundle/vim-colorschemes"]
 	path = .vim/bundle/vim-colorschemes
 	url = https://github.com/flazz/vim-colorschemes
-[submodule ".vim/bundle/unite.vim"]
-	path = .vim/bundle/unite.vim
-	url = https://github.com/Shougo/unite.vim
 [submodule ".vim/bundle/nerdcommenter"]
 	path = .vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter
@@ -91,3 +88,9 @@
 [submodule ".vim/bundle/vimproc.vim"]
 	path = .vim/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim
+[submodule ".vim/bundle/denite.nvim"]
+	path = .vim/bundle/denite.nvim
+	url = https://github.com/Shougo/denite.nvim
+[submodule ".vim/bundle/fzf"]
+	path = .vim/bundle/fzf
+	url = https://github.com/junegunn/fzf
