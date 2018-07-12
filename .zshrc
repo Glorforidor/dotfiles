@@ -94,7 +94,7 @@ if [ -z "$TMUX" ]; then
     export PATH=$PATH:/usr/local/go/bin
     export PATH=$PATH:$HOME/go/bin
 
-    figlet -c -t -f banner Welcome to my awesome terminal!
+    figlet -c -t -f banner Welcome back, Commander!
 
     # set Rust
     export PATH="$HOME/.cargo/bin:$PATH"
