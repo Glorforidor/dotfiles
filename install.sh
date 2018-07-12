@@ -26,7 +26,7 @@ cp -r .tmux .tmux.conf $HOME/
 
 # Download Golang
 wget -O $HOME/Downloads/go.tar.gz \
-    https://dl.google.com/go/go1.10.linux-amd64.tar.gz
+    https://dl.google.com/go/go1.10.3.linux-amd64.tar.gz
 
 # Sleep for a bit.
 sleep 2
