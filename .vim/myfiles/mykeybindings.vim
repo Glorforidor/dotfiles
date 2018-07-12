@@ -27,8 +27,10 @@ nnoremap Y y$
 nnoremap <F3> :set hlsearch!<CR>
 
 " Better navigation
-noremap j gj
-noremap k gk
+noremap <silent> j gj
+noremap <silent> k gk
+noremap <silent> 0 g0
+noremap <silent> $ g$
 
 " Better indention
 vnoremap < <gv
