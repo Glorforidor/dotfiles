@@ -1,0 +1,8 @@
+[core]
+	editor = vim
+
+	excludesfile = ~/.gitignore
+[credential]
+	helper = cache
+[fetch]
+	prune = true
