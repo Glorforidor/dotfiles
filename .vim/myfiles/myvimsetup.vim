@@ -93,6 +93,7 @@ set t_Co=256
 
 " Auto read file and change directory
 set autoread
+set autowrite
 set autochdir
 
 " allow backspacing over everything in insert mode
