@@ -68,7 +68,7 @@ source $ZSH/oh-my-zsh.sh
   if [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
   else
-    export EDITOR='mvim'
+    export EDITOR='vim'
   fi
 
 # Compilation flags
@@ -97,5 +97,5 @@ if [ -z "$TMUX" ]; then
     figlet -c -t -f banner Welcome back, Commander!
 
     # set Rust
-    export PATH="$HOME/.cargo/bin:$PATH"
+    export PATH=$PATH:$HOME/.cargo/bin
 fi
