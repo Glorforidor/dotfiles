@@ -41,6 +41,16 @@ set showmatch
 set cursorline
 set ruler
 
+" redraw
+set lazyredraw
+
+" split
+set splitright
+set splitbelow
+
+" buffers
+set hidden
+
 " Set numbering
 set number
 
@@ -82,7 +92,7 @@ set history=1000
 set undolevels=1000
 
 " Search
-set hlsearch!
+set hlsearch
 set incsearch
 set ignorecase
 set smartcase
@@ -91,7 +101,7 @@ set smartcase
 let g:rehash256 = 1
 set t_Co=256
 
-" Auto read file and change directory
+" Auto read/write file and change directory
 set autoread
 set autowrite
 set autochdir
