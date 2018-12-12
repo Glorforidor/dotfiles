@@ -1,7 +1,7 @@
 " Airline
 let g:airline_left_sep=''
 let g:airline_right_sep=''
-colorscheme onedark
+colorscheme monochrome
 
 " Goyo and Limelight
 autocmd User GoyoEnter Limelight
@@ -19,6 +19,7 @@ let g:jedi#force_py_version=3
 " Nerdcommenter
 let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
+let g:NERDTreeNodeDelimiter = "\u00a0"
 
 " NerdTree
 map <Leader>k :NERDTreeToggle<CR>
