@@ -28,7 +28,7 @@ map <Leader>k :NERDTreeToggle<CR>
 let g:rustfmt_autosave = 1
 
 " Syntastic
-let g:syntastic_python_python_exec = '/usr/bin/python3'
+let g:syntastic_python_python_exec = '/usr/bin/env python3'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
