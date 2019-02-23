@@ -1,17 +1,35 @@
 #!/bin/bash
 
-# Install programs
+# Setup linux installations after my preference.
 
-if [ ! -f /bin/zsh ]; then
-    sudo apt-get install zsh
+# source the os-release so the package manager can be detected
+if [[ -f /etc/os-release ]]; then
+    source '/etc/os-release'
 fi
 
-if [ ! -f /usr/bin/curl ]; then
-    sudo apt-get install curl
+case "${ID}" in
+    *'ubuntu'* | *'debian'*)
+        package_manager='apt-get'
+        ;;
+    *'fedora'*)
+        package_manager='dnf'
+        ;;
+    *)
+        # assume zypper as default package manager
+        package_manager='zypper'
+        ;;
+esac
+
+if [[ ! -f /bin/zsh ]]; then
+    sudo "${package_manager}" install -y zsh
 fi
 
-if [ ! -f /usr/bin/tmux ]; then
-    sudo apt-get install tmux
+if [[ ! -f /usr/bin/curl ]]; then
+    sudo "${package_manager}" install -y curl
+fi
+
+if [[ ! -f /usr/bin/tmux ]]; then
+    sudo "${package_manager}" install -y tmux
 fi
 
 # Setup Vim and Tmux
