@@ -89,13 +89,6 @@ source $ZSH/oh-my-zsh.sh
 # Set terminal keybindings to vi.
 set -o vi
 
-if [ -z "$TMUX" ]; then
-    # set Go
-    export PATH=$PATH:/usr/local/go/bin
-    export PATH=$PATH:$HOME/go/bin
-
-    figlet -c -t -f banner Welcome back, Commander!
-
-    # set Rust
-    export PATH=$PATH:$HOME/.cargo/bin
+if [[ -z "$TMUX" ]]; then
+    figlet -c -t -f banner 'Hail the Omnissiah!'
 fi
