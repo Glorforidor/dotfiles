@@ -88,9 +88,6 @@
 [submodule ".vim/bundle/vimproc.vim"]
 	path = .vim/bundle/vimproc.vim
 	url = https://github.com/Shougo/vimproc.vim
-[submodule ".vim/bundle/denite.nvim"]
-	path = .vim/bundle/denite.nvim
-	url = https://github.com/Shougo/denite.nvim
 [submodule ".vim/bundle/fzf"]
 	path = .vim/bundle/fzf
 	url = https://github.com/junegunn/fzf
