@@ -44,7 +44,7 @@ cp -r .tmux .tmux.conf "${HOME}"/
 
 # Download Go
 curl --create-dirs -o "${HOME}"/Downloads/go.tar.gz \
-    https://dl.google.com/go/go1.11.5.linux-amd64.tar.gz
+    https://dl.google.com/go/go1.12.4.linux-amd64.tar.gz
 
 # Sleep for a bit.
 sleep 2
