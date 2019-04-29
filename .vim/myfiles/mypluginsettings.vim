@@ -1,6 +1,6 @@
 " Airline
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
 colorscheme monochrome
 
 " Goyo and Limelight
@@ -14,7 +14,7 @@ let g:jedi#completions_command = ""
 let g:jedi#show_call_signatures = "0"
 let g:jedi#popup_on_dot = 0
 let g:jedi#auto_close_doc = 0
-let g:jedi#force_py_version=3
+let g:jedi#force_py_version = 3
 
 " Nerdcommenter
 let g:NERDSpaceDelims = 1
@@ -42,6 +42,8 @@ map <Leader>t :TagbarToggle<CR>
 let g:go_gocode_propose_source = 0
 let g:go_fmt_command = "goimports"
 let g:go_def_mode = "gopls"
+let g:go_info_mode = 'gopls'
+let g:go_metalinter_command = 'golangci-lint'
 let g:go_auto_type_info = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
@@ -52,11 +54,11 @@ let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 
 " Vim-Go fixes with Syntastic
-let g:syntastic_go_checkers = ['golint', 'govet', 'gometalinter']
+let g:syntastic_go_checkers = ['golint', 'govet', 'golangci_lint']
 let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = "quickfix"
 
 " Vim-racer
-let g:racer_cmd="/home/pbj/.cargo/bin/racer"
-let $RUST_SRC_PATH="/home/pbj/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+let g:racer_cmd = "/home/pbj/.cargo/bin/racer"
+let $RUST_SRC_PATH = "/home/pbj/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
