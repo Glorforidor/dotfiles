@@ -117,7 +117,7 @@ set wrap linebreak
 set showbreak=" "
 
 " Textwidth
-set textwidth=80
+set textwidth=79
 
 " TTY behavior
 set ttyfast
