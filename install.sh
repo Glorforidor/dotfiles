@@ -43,7 +43,7 @@ cp -r .tmux .tmux.conf "${HOME}/"
 
 # Download Go
 curl --create-dirs -o "${HOME}/Downloads/go.tar.gz" \
-    https://dl.google.com/go/go1.12.4.linux-amd64.tar.gz
+    https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz
 
 # Sleep for a bit.
 sleep 2
@@ -58,9 +58,12 @@ export PATH="${PATH}:/usr/local/go/bin"
 export PATH="${PATH}:${HOME}"/go/bin"
 ' >> "${HOME}/.profile"
 
-# Download Rust
-# echo '# set Rust'
-# curl https://sh.rustup.rs -sSf | sh
+# Download Rust and run their install program
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+grep -qxF '# set Rust' '~/.profile' || echo '# set Rust
+export PATH="${PATH}:${HOME}/.cargo/bin"
+' >> "${HOME}/.profile"
 
 # Download Google App Engine
 # curl --create-dirs -o "${HOME}/Downloads/goappengine.zip" https://storage.googleapis.com/appengine-sdks/featured/go_appengine_sdk_linux_amd64-1.9.48.zip
@@ -75,7 +78,7 @@ export PATH="${PATH}:${HOME}"/go/bin"
 # ' >> "${HOME}/.profile"
 
 # Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 cp -r .zshrc "${HOME}/"
 cp "${HOME}/.profile" "${HOME}/.zprofile"
