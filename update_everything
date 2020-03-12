@@ -3,4 +3,4 @@
 git submodule foreach --quiet pwd | \
 xargs -P0 -I '{}' bash -c "cd {}; git pull; git submodule update --init --recursive"
 
-cp -r .vim .tmux "$HOME/"
+cp -r .vim .tmux "${HOME}/"
