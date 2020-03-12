@@ -128,3 +128,6 @@ set ttimeoutlen=100
 
 " Strange spaces!
 set nojoinspaces
+
+" Python
+set pyxversion=0
