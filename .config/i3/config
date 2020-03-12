@@ -138,8 +138,10 @@ bindsym XF86AudioMute exec amixer set Master 1+ toggle # mute sound
 bindsym XF86AudioMicMute exec amixer set Capture toggle # mute mic
 
 # screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xrandr --verbose | awk '/Brightness/ && $2 != 1.0 {print $2+0.1}' | xargs -n1 -I '{}' xrandr --output eDP-1 --brightness {} # increase screen brightness
+bindsym XF86MonBrightnessDown exec xrandr --verbose | awk '/Brightness/ && $2 != 0.1 {print $2-0.1}' | xargs -n1 -I '{}' xrandr --output eDP-1 --brightness {} # decrease screen brightness
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
 
 # media player controls
 bindsym XF86AudioPlay exec playerctl play
@@ -147,8 +149,9 @@ bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
-# map capslock to escape
-exec_always setxkbmap -option caps:escape
+bindsym --release Print exec scrot -m "${HOME}/Pictures/%s_%H%M_%d.%m.%Y_$wx$h.png"
+bindsym --release Shift+Print exec scrot -s "${HOME}/Pictures/%s_%H%M_%d%m%Y_$wx$h.png"
+bindsym --release $mod+Shift+Print exec scrot -u -d 4 "${HOME}/Pictures/%s_%H%M_%d%m%Y_$wx$h.png"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -193,4 +196,15 @@ bar {
 
 exec --no-startup-id nm-applet
 exec --no-startup-id ibus-daemon
-exec --no-startup-id feh --bg-fill ${HOME}/Pictures/war_t-rex.jpg
+exec --no-startup-id syndaemon -d -i 0.5 -K -R
+
+exec_always --no-startup-id feh --bg-fill ${HOME}/Pictures/war_t-rex.jpg
+
+# disable bell
+exec_always xset b off
+
+# map capslock to escape
+exec_always setxkbmap -option caps:escape
+
+# move nvidia settings to last workspace
+for_window [title="NVIDIA X"] move container to workspace 10
