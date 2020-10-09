@@ -106,7 +106,21 @@ set autoread
 set autowrite
 set autochdir
 
-" allow backspacing over everything in insert mode
+" Swap file
+set updatetime=1000
+set directory^=~/.vim/swap//
+
+" Backup
+set writebackup
+set nobackup
+set backupcopy=auto
+set backupdir^=~/.vim/backup//
+
+" Undo
+set undofile
+set undodir^=~/.vim/undo//
+
+" Allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 " Always show status
