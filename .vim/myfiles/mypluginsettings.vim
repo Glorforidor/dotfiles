@@ -10,8 +10,8 @@ let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 
 " jedi-vim
-let g:jedi#completions_command = ""
-let g:jedi#show_call_signatures = "0"
+let g:jedi#completions_command = ''
+let g:jedi#show_call_signatures = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#auto_close_doc = 0
 let g:jedi#force_py_version = 3
@@ -44,8 +44,8 @@ map <Leader>t :TagbarToggle<CR>
 " Vim-Go
 " turn of source proposel, since it is slowing down autocomplete
 let g:go_gocode_propose_source = 0
-let g:go_fmt_command = "goimports"
-let g:go_def_mode = "gopls"
+let g:go_fmt_command = 'goimports'
+let g:go_def_mode = 'gopls'
 let g:go_info_mode = 'gopls'
 let g:go_rename_command = 'gopls'
 let g:go_metalinter_command = 'gopls' " golangci-lint
@@ -67,8 +67,4 @@ autocmd FileType go noremap <silent> <buffer> <F2> :GoRename<cr>
 let g:syntastic_go_checkers = ['golint', 'govet', 'golangci_lint']
 let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-let g:go_list_type = "quickfix"
-
-" Vim-racer
-let g:racer_cmd = "/home/pbj/.cargo/bin/racer"
-let $RUST_SRC_PATH = "/home/pbj/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src"
+let g:go_list_type = 'quickfix'
