@@ -44,7 +44,6 @@ map <Leader>t :TagbarToggle<CR>
 " Vim-Go
 " turn of source proposel, since it is slowing down autocomplete
 let g:go_gocode_propose_source = 0
-let g:go_fmt_command = 'goimports'
 let g:go_def_mode = 'gopls'
 let g:go_info_mode = 'gopls'
 let g:go_rename_command = 'gopls'
@@ -68,3 +67,6 @@ let g:syntastic_go_checkers = ['golint', 'govet', 'golangci_lint']
 let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_list_type = 'quickfix'
+
+" Undotree
+nnoremap <F5> :UndotreeToggle<CR>

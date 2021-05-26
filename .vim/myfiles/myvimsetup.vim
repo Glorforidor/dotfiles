@@ -41,6 +41,9 @@ set showmatch
 set cursorline
 set ruler
 
+" Scroll
+set scrolloff=8
+
 " redraw
 set lazyredraw
 
@@ -53,6 +56,7 @@ set hidden
 
 " Set numbering
 set number
+set relativenumber
 
 " Enable filetype, syntax and autocomplete
 syntax off
@@ -145,3 +149,6 @@ set nojoinspaces
 
 " Python
 set pyxversion=0
+
+" Do not pass messages to |ins-completion-menu|.
+set shortmess+=c
