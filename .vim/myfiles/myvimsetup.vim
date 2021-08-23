@@ -152,3 +152,6 @@ set pyxversion=0
 
 " Do not pass messages to |ins-completion-menu|.
 set shortmess+=c
+
+let mapleader = " "
+let maplocalleader = " "

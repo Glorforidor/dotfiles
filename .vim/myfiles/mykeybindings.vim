@@ -43,3 +43,9 @@ map Q gq
 " so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
+" Go
+nnoremap <leader>gr :GoRun<CR>
+nnoremap <leader>gb :GoBuild<CR>
+nnoremap <leader>gv :GoVet<CR>
+nnoremap <leader>gt :GoTest<CR>
+nnoremap <leader>gtf :GoTestFunc<CR>

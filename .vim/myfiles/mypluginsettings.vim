@@ -57,16 +57,19 @@ let g:go_highlight_fields = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
+let g:go_list_type = 'quickfix'
 
 " Vim-Go keybindings
 autocmd FileType go noremap <silent> <buffer> <localleader>r :GoRename<cr>
 autocmd FileType go noremap <silent> <buffer> <F2> :GoRename<cr>
 
-" Vim-Go fixes with Syntastic
+" Syntastic
 let g:syntastic_go_checkers = ['golint', 'govet', 'golangci_lint']
 let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-let g:go_list_type = 'quickfix'
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go', 'tex'] }
 
 " Undotree
 nnoremap <F5> :UndotreeToggle<CR>
+
+" Vimtex
+let g:vimtex_quickfix_open_on_warning = 0
