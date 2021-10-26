@@ -6,30 +6,32 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/bundle')
-	Plug 'junegunn/fzf'
-	Plug 'junegunn/fzf.vim'
-	Plug 'junegunn/goyo.vim'
-	Plug 'junegunn/limelight.vim'
-	Plug 'davidhalter/jedi-vim'
-	Plug 'scrooloose/nerdcommenter'
-	Plug 'scrooloose/nerdtree'
-	Plug 'scrooloose/syntastic'
-	Plug 'rust-lang/rust.vim'
-	Plug 'godlygeek/tabular'
-	Plug 'majutsushi/tagbar'
-	Plug 'SirVer/ultisnips'
-	Plug 'mbbill/undotree'
-	Plug 'tpope/vim-abolish'
-	Plug 'tpope/vim-fugitive'
-	Plug 'tpope/vim-repeat'
-	Plug 'tpope/vim-speeddating'
-	Plug 'tpope/vim-surround'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'flazz/vim-colorschemes'
-	Plug 'fatih/vim-go'
-	Plug 'Shougo/vimproc.vim'
-	Plug 'lervag/vimtex'
+
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'rust-lang/rust.vim'
+Plug 'godlygeek/tabular'
+Plug 'majutsushi/tagbar'
+Plug 'SirVer/ultisnips'
+Plug 'mbbill/undotree'
+Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'flazz/vim-colorschemes'
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'lervag/vimtex', { 'for': 'tex' }
+
 call plug#end()
 
 source ~/.vim/myfiles/myvimsetup.vim

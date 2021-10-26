@@ -1,7 +1,6 @@
 " Airline
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
-colorscheme monochrome
 
 " Goyo and Limelight
 autocmd User GoyoEnter Limelight
@@ -57,6 +56,7 @@ let g:go_highlight_fields = 1
 let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
+let g:go_doc_popup_window = 1
 let g:go_list_type = 'quickfix'
 
 " Vim-Go keybindings

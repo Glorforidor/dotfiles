@@ -59,11 +59,11 @@ set number
 set relativenumber
 
 " Enable filetype, syntax and autocomplete
-syntax off
+syntax on
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set complete-=i
-set completeopt=longest,menuone,preview
+set completeopt=longest,menuone,popup
 
 " always set autoindenting on
 set autoindent
@@ -104,6 +104,8 @@ set smartcase
 " Color
 let g:rehash256 = 1
 set t_Co=256
+set background=dark
+colorscheme gruvbox
 
 " Auto read/write file and change directory
 set autoread
