@@ -46,6 +46,7 @@ set scrolloff=8
 
 " redraw
 set lazyredraw
+set redrawtime=10000
 
 " split
 set splitright
@@ -133,7 +134,8 @@ set backspace=indent,eol,start
 set laststatus=2
 
 " Better wrapping
-set wrap linebreak
+set wrap
+set linebreak
 set showbreak=" "
 
 " Textwidth

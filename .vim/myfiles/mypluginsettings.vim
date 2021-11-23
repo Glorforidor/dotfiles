@@ -3,8 +3,8 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
 " Goyo and Limelight
-autocmd User GoyoEnter Limelight
-autocmd User GoyoLeave Limelight!
+autocmd! User GoyoEnter Limelight
+autocmd! User GoyoLeave Limelight!
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 
@@ -18,13 +18,9 @@ let g:jedi#force_py_version = 3
 " jedi-vim keybindings
 autocmd FileType python noremap <silent> <buffer> <F2> :call jedi#rename()<cr>
 
-" Nerdcommenter
-let g:NERDSpaceDelims = 1
-let g:NERDCompactSexyComs = 1
-let g:NERDTreeNodeDelimiter = "\u00a0"
-
 " NerdTree
-map <Leader>k :NERDTreeToggle<CR>
+" stolen from the vim conf ! :D
+nnoremap <expr> <leader>k g:NERDTree.IsOpen() ? ':NERDTreeClose<cr>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<cr>' 
 
 " rust.vim
 let g:rustfmt_autosave = 1
@@ -73,3 +69,7 @@ nnoremap <F5> :UndotreeToggle<CR>
 
 " Vimtex
 let g:vimtex_quickfix_open_on_warning = 0
+
+" FZF
+nmap <leader>f :Files<cr>
+nmap <leader>gf :GF<cr>
