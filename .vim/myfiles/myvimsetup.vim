@@ -28,6 +28,12 @@ if has("autocmd")
     \ endif
 endif " has("autocmd")
 
+augroup MINE
+    autocmd!
+    " Stole this from ThePrimeagen
+    autocmd bufwritepre * %s/\s\+$//e
+augroup END
+
 " Initial setup
 set nocompatible
 set modifiable
@@ -46,7 +52,7 @@ set scrolloff=8
 
 " redraw
 set lazyredraw
-set redrawtime=10000
+set redrawtime=1000
 
 " split
 set splitright

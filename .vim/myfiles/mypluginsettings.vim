@@ -20,7 +20,7 @@ autocmd FileType python noremap <silent> <buffer> <F2> :call jedi#rename()<cr>
 
 " NerdTree
 " stolen from the vim conf ! :D
-nnoremap <expr> <leader>k g:NERDTree.IsOpen() ? ':NERDTreeClose<cr>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<cr>' 
+nnoremap <expr> <leader>k g:NERDTree.IsOpen() ? ':NERDTreeClose<cr>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<cr>'
 
 " rust.vim
 let g:rustfmt_autosave = 1
@@ -54,6 +54,9 @@ let g:go_highlight_operators = 0
 let g:go_highlight_build_constraints = 1
 let g:go_doc_popup_window = 1
 let g:go_list_type = 'quickfix'
+let g:go_debug_windows = { 'vars': 'rightbelow 60vnew', 'stack': 'rightbelow 10new', }
+let g:go_term_enabled = 1
+let g:go_term_reuse = 1
 
 " Vim-Go keybindings
 autocmd FileType go noremap <silent> <buffer> <localleader>r :GoRename<cr>

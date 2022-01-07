@@ -36,4 +36,3 @@ call plug#end()
 source ~/.vim/myfiles/myvimsetup.vim
 source ~/.vim/myfiles/mypluginsettings.vim
 source ~/.vim/myfiles/mykeybindings.vim
-
