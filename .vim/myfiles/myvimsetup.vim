@@ -29,9 +29,11 @@ if has("autocmd")
 endif " has("autocmd")
 
 augroup MINE
+    " Stole this from ThePrimeagen and added some.
     autocmd!
-    " Stole this from ThePrimeagen
-    autocmd bufwritepre * %s/\s\+$//e
+    autocmd bufwritepre * let current_pos = getpos(".")
+    autocmd bufwritepre * silent! undojoin | %s/\s\+$//e
+    autocmd bufwritepre * call setpos(".", current_pos)
 augroup END
 
 " Initial setup
