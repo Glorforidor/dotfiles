@@ -1,10 +1,8 @@
 configuration {
     modi: "window,drun,run,ssh";
     font: "Go Mono 12";
-    matching-negate-char: '!' /* unsupported */;
-/*  width: 50;*/
-/*  lines: 15;*/
-/*  columns: 1;*/
+    dpi: 1; /* With one it seems to follow the dpi of the screen. */
+    /* matching-negate-char: '!'; */
 /*  bw: 1;*/
 /*  location: 0;*/
 /*  padding: 5;*/
@@ -48,7 +46,6 @@ configuration {
 /*  hide-scrollbar: false;*/
 /*  fullscreen: false;*/
 /*  fake-transparency: false;*/
-/*  dpi: -1;*/
 /*  threads: 0;*/
 /*  scrollbar-width: 8;*/
 /*  scroll-method: 0;*/
@@ -151,3 +148,10 @@ configuration {
 }
 
 @theme "glue_pro_blue"
+listview {
+    lines:      15;
+    columns:    1;
+}
+window {
+    width: 50%;
+}
