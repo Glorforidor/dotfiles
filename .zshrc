@@ -85,6 +85,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias cal='ncal -w -b -M -W 4'
+alias gcd='cd $(git rev-parse --show-toplevel)'
 
 # Set terminal keybindings to vi.
 set -o vi
@@ -92,3 +94,14 @@ set -o vi
 if [[ -z "$TMUX" ]]; then
     figlet -c -t -f banner 'Hail the Omnissiah!'
 fi
+
+# Setup FZF
+#
+export FZF_DEFAULT_OPTS='--bind ctrl-y:preview-up,ctrl-e:preview-down,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down,ctrl-/:toggle-preview'
+if command -v bat &> /dev/null; then
+    alias fb='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
+else
+    alias fb='--preview "less {}"'
+fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
