@@ -3,8 +3,11 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
 " Goyo and Limelight
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
+augroup GOYO
+    autocmd!
+    autocmd User GoyoEnter Limelight
+    autocmd User GoyoLeave Limelight!
+augroup END
 let g:limelight_conceal_ctermfg = 'gray'
 let g:limelight_conceal_ctermfg = 240
 
@@ -17,14 +20,6 @@ let g:jedi#force_py_version = 3
 
 " rust.vim
 let g:rustfmt_autosave = 1
-
-" Syntastic
-let g:syntastic_python_python_exec = '/usr/bin/env python3'
-let g:syntastic_python_checkers = ['pyflakes']
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
 
 " Vim-Go
 " turn of source proposel, since it is slowing down autocomplete
@@ -48,10 +43,13 @@ let g:go_debug_windows = { 'vars': 'rightbelow 60vnew', 'stack': 'rightbelow 10n
 let g:go_term_enabled = 1
 let g:go_term_reuse = 1
 
-" Syntastic
-let g:syntastic_go_checkers = ['golint', 'govet', 'golangci_lint']
-let g:syntastic_go_gometalinter_args = ['--disable-all', '--enable=errcheck']
-let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go', 'tex'] }
-
 " Vimtex
 let g:vimtex_quickfix_open_on_warning = 0
+
+" Ale
+" For go files disable the lsp feature in ale and let vim-go do this.
+augroup ALE
+    autocmd!
+    autocmd filetype go let g:ale_disable_lsp = 1
+augroup END
+

@@ -165,5 +165,6 @@ set pyxversion=0
 " Do not pass messages to |ins-completion-menu|.
 set shortmess+=c
 
+" Space for leader is more convenient.
 let mapleader = " "
 let maplocalleader = " "

@@ -46,13 +46,13 @@ inoremap <C-U> <C-G>u<C-U>
 " Plugin bindings
 
 " jedi-vim keybindings
-augroup python
+augroup PYTHON
     autocmd!
     autocmd FileType python nnoremap <silent> <buffer> <F2> :call jedi#rename()<CR>
 augroup END
 
 " Vim-Go keybindings
-augroup go
+augroup GO
     autocmd!
     autocmd FileType go nnoremap <silent> <buffer> <leader>gr :GoRun<CR>
     autocmd FileType go nnoremap <silent> <buffer> <leader>gb :GoBuild<CR>
@@ -64,15 +64,16 @@ augroup go
 augroup END
 
 " FZF
-nmap <leader>f :Files<cr>
-nmap <leader>gf :GF<cr>
+nmap <leader>f :Files<CR>
+nmap <leader>gf :GF<CR>
+nmap <leader>b :Buffers<CR>
 
 " Undotree
 nnoremap <F5> :UndotreeToggle<CR>
 
 " NerdTree
 " stolen from the vim conf ! :D
-nnoremap <expr> <leader>k g:NERDTree.IsOpen() ? ':NERDTreeClose<cr>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<cr>'
+nnoremap <expr> <leader>k g:NERDTree.IsOpen() ? ':NERDTreeClose<CR>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<CR>'
 
 " Tagbar
-noremap <Leader>t :TagbarToggle<CR>
+noremap <leader>t :TagbarToggle<CR>

@@ -12,7 +12,6 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'rust-lang/rust.vim'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
@@ -31,6 +30,8 @@ Plug 'flazz/vim-colorschemes'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'sheerun/vim-polyglot'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 source ~/.vim/myfiles/myvimsetup.vim
