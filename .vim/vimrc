@@ -1,11 +1,13 @@
-" vim-plug
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+vim9script
+
+# vim-plug
+var data_dir = has('nvim') ? stdpath('data') .. '/site' : '~/.vim'
+if empty(glob(data_dir .. '/autoload/plug.vim'))
+  silent execute '!curl -fLo ' .. data_dir .. '/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/bundle')
+g:plug#begin('~/.vim/bundle')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
@@ -16,6 +18,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'mbbill/undotree'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
@@ -30,10 +33,15 @@ Plug 'flazz/vim-colorschemes'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'lervag/wiki.vim'
+Plug 'lervag/wiki-ft.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
-call plug#end()
+Plug 'rodjek/vim-puppet'
+g:plug#end()
 
 source ~/.vim/myfiles/myvimsetup.vim
 source ~/.vim/myfiles/mypluginsettings.vim
 source ~/.vim/myfiles/mykeybindings.vim
+
+runtime ftplugin/man.vim

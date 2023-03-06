@@ -1,170 +1,167 @@
-" In many terminal emulators the mouse works just fine, thus enable it.
+vim9script
+
+# In many terminal emulators the mouse works just fine, thus enable it.
 if has('mouse')
   set mouse=a
 endif
 
-" Setting up font for different guis
-if &t_Co > 2 || has("gui_running")
-    if has("gui_gtk2")
-        set guifont=Inconsolata\ 12
-    elseif has("gui_macvim")
-        set guifont=Menlo\ Regular:h14
-    elseif has("gui_win32")
-        set guifont=Ubuntu\ Mono:h16
-        set antialias
-    endif
+# Only do this part when compiled with support for autocommands.
+if has("autocmd")
+    # When editing a file, always jump to the last known cursor position.
+    # Don't do it when the position is invalid or when inside an event handler
+    # (happens when dropping a file on gvim).
+    # Also don't do it when the mark is in the first line, that is the default
+    # position when opening a file.
+    autocmd BufReadPost * {
+        if line("'\"") > 1 && line("'\"") <= line("$") |
+            exe "normal! g`\"" |
+        endif
+    }
 endif
 
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-    " When editing a file, always jump to the last known cursor position.
-    " Don't do it when the position is invalid or when inside an event handler
-    " (happens when dropping a file on gvim).
-    " Also don't do it when the mark is in the first line, that is the default
-    " position when opening a file.
-    autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
-endif " has("autocmd")
-
+var current_pos: list<number>
 augroup MINE
-    " Stole this from ThePrimeagen and added some.
+    # Stole this from ThePrimeagen and added some.
     autocmd!
-    autocmd bufwritepre * let current_pos = getpos(".")
-    autocmd bufwritepre * silent! undojoin | %s/\s\+$//e
-    autocmd bufwritepre * call setpos(".", current_pos)
+    autocmd BufWritePre * current_pos = getpos(".")
+    autocmd BufWritePre * silent! undojoin | :%s/\s\+$//e
+    autocmd BufWritePre * setpos(".", current_pos)
 augroup END
 
-" Initial setup
+# Initial setup
 set nocompatible
 set modifiable
 
-" Display
+# Display
 set title
 set encoding=utf-8 nobomb
 set showcmd
-set showmode
+# Let the airline show the mode.
+# set showmode
 set showmatch
 set cursorline
 set ruler
 
-" Scroll
+# Scroll
 set scrolloff=8
 
-" redraw
+# redraw
 set lazyredraw
 set redrawtime=1000
 
-" split
+# split
 set splitright
 set splitbelow
 
-" buffers
+# buffers
 set hidden
 
-" Set numbering
+# Set numbering
 set number
 set relativenumber
 
-" Enable filetype, syntax and autocomplete
+# Enable filetype, syntax and autocomplete
 syntax on
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set complete-=i
 set completeopt=longest,menuone,popup
 
-" always set autoindenting on
+# always set autoindenting on
 set autoindent
 
-" Round indent
+# Round indent
 set shiftround
 
-" Set style for tabs and spaces
+# Set style for tabs and spaces
 set tabstop=4
 set shiftwidth=4
 set expandtab
 set softtabstop=4
 set smarttab
 
-" Insure end of line
+# Insure end of line
 set eol
 
-" Better cmd autocomplete
+# Better cmd autocomplete
 set wildmenu
-set wildmode=list:full
+set wildoptions=pum,fuzzy
+# set wildmode=list:full
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=*.swp,*~,._*
 
-" Remember commands
+# Remember commands
 set history=1000
 
-" Undo
+# Undo
 set undolevels=1000
 
-" Search
+# Search
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-" Color
-let g:rehash256 = 1
+# Color
+g:rehash256 = 1
 set t_Co=256
 set background=dark
 colorscheme gruvbox
 
-" Auto read/write file and change directory
+# Auto read/write file and change directory
 set autoread
 set autowrite
 set autochdir
 
-" Swap file
+# Swap file
 set updatetime=1000
 set directory^=~/.vim/swap//
 
-" Backup
+# Backup
 set writebackup
 set nobackup
 set backupcopy=auto
 set backupdir^=~/.vim/backup//
 
-" Undo
+# Undo
 set undofile
 set undodir^=~/.vim/undo//
 
-" Allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+# Allow backspacing over everything in insert mode
+set backspace=3
 
-" Always show status
+# Always show status
 set laststatus=2
 
-" Better wrapping
+# Better wrapping
 set wrap
 set linebreak
-set showbreak=" "
+set showbreak=
 
-" Textwidth
+# Textwidth
 set textwidth=79
 
-" TTY behavior
+# TTY behavior
 set ttyfast
 
-" Timeout
+# Timeout
 set ttimeout
 set ttimeoutlen=100
 
-" Strange spaces!
+# Strange spaces!
 set nojoinspaces
 
-" Python
+# Python
 set pyxversion=0
 
-" Do not pass messages to |ins-completion-menu|.
+# Do not pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-" Space for leader is more convenient.
-let mapleader = " "
-let maplocalleader = " "
+# Space for leader is more convenient.
+g:mapleader = " "
+g:maplocalleader = " "
+
+# A strange fix for a strange black background in Vim from Kitty?
+&t_ut = ''
