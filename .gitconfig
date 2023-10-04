@@ -1,8 +1,8 @@
 [core]
-	editor = vim
-
-	excludesfile = ~/.gitignore
-[credential]
-	helper = cache
+    editor = vim
+[init]
+	defaultBranch = main
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
 [fetch]
-	prune = true
+    prune = true
