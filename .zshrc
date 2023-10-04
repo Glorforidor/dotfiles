@@ -51,25 +51,25 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(docker encode64 git git-extras golang pip python rsync ruby rust web-search wd vi-mode tmux nmap pass vagrant)
+plugins=(docker encode64 git git-extras golang pip python rsync ruby rust web-search wd zsh-vi-mode tmux nmap pass vagrant ssh-agent gh gopass)
 
 source $ZSH/oh-my-zsh.sh
 
 # Plugin configuration
 
 # User configuration
-
+#
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-  if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-  else
-    export EDITOR='vim'
-  fi
+if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='/home/peboj/.local/bin/vim'
+else
+    export EDITOR='/home/peboj/.local/bin/vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -86,7 +86,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias cal='ncal -w -b -M -W 4'
-alias gcd='cd $(git rev-parse --show-toplevel)'
 
 # Set terminal keybindings to vi.
 set -o vi
@@ -103,5 +102,21 @@ if command -v bat &> /dev/null; then
 else
     alias fb='--preview "less {}"'
 fi
+
+# This is a fix for zsh-vi-mode overwriting fzf keybindings.
+function zvm_after_init() {
+   [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+}
+
+# Git plugin makes an alias for gcd - which I do not use and I want that name!
+unalias gcd
+
+# Traverse to the root of a git repo.
+function gcd() {
+    if [[ $(git rev-parse --is-inside-work-tree 2> /dev/null) ]]
+    then
+        cd $(git rev-parse --show-toplevel)
+    fi
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
