@@ -100,7 +100,7 @@ export FZF_DEFAULT_OPTS='--bind ctrl-y:preview-up,ctrl-e:preview-down,ctrl-u:pre
 if command -v bat &> /dev/null; then
     alias fb='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
 else
-    alias fb='--preview "less {}"'
+    alias fb='fzf --preview "less {}"'
 fi
 
 # This is a fix for zsh-vi-mode overwriting fzf keybindings.
