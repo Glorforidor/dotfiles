@@ -31,7 +31,7 @@ g:go_gocode_propose_source = 0
 g:go_def_mode = 'gopls'
 g:go_info_mode = 'gopls'
 g:go_rename_command = 'gopls'
-g:go_metalinter_command = 'gopls' # golangci-lint
+g:go_metalinter_command = 'golangci-lint' # golangci-lint
 g:go_gopls_staticcheck = 1
 g:go_auto_type_info = 1
 g:go_highlight_functions = 1
@@ -54,6 +54,7 @@ g:vimtex_quickfix_open_on_warning = 0
 # For go files disable the lsp feature in ale and let vim-go do this.
 augroup ALE
     autocmd!
+    autocmd filetype go g:ale_go_golangci_lint_package = 1
     autocmd filetype go g:ale_disable_lsp = 1
 augroup END
 
