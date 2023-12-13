@@ -117,16 +117,25 @@ set autochdir
 
 # Swap file
 set updatetime=1000
+if ! isdirectory($HOME .. "/.vim/swap")
+    call mkdir($HOME .. "/.vim/swap", "p", 0o755)
+endif
 set directory^=~/.vim/swap//
 
 # Backup
 set writebackup
 set nobackup
 set backupcopy=auto
+if ! isdirectory($HOME .. "/.vim/backup")
+    call mkdir($HOME .. "/.vim/backup", "p", 0o755)
+endif
 set backupdir^=~/.vim/backup//
 
 # Undo
 set undofile
+if ! isdirectory($HOME .. "/.vim/undo")
+    call mkdir($HOME .. "/.vim/undo", "p", 0o755)
+endif
 set undodir^=~/.vim/undo//
 
 # Allow backspacing over everything in insert mode
