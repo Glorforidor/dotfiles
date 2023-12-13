@@ -66,9 +66,9 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='/home/peboj/.local/bin/vim'
+    export EDITOR='$HOME/.local/bin/vim'
 else
-    export EDITOR='/home/peboj/.local/bin/vim'
+    export EDITOR='$HOME/.local/bin/vim'
 fi
 
 # Compilation flags
