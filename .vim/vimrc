@@ -38,10 +38,13 @@ Plug 'lervag/wiki-ft.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'dense-analysis/ale'
 Plug 'rodjek/vim-puppet'
+Plug 'ocaml/vim-ocaml'
 g:plug#end()
+
 
 source ~/.vim/myfiles/myvimsetup.vim
 source ~/.vim/myfiles/mypluginsettings.vim
 source ~/.vim/myfiles/mykeybindings.vim
+source ~/.vim/myfiles/ocamlmycaml.vim
 
 runtime ftplugin/man.vim
