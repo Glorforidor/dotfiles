@@ -90,9 +90,10 @@ augroup END
 # FZF
 nnoremap <leader>gf :GF<CR>
 nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>l :Lines<CR>
 
 # FZF anf Fugitive <3
-nnoremap <expr> <leader>a g:FugitiveIsGitDir() ? ':Gcd <BAR> Rg<SPACE>' : ':Rg<Space>'
+nnoremap <expr> <leader>a g:FugitiveIsGitDir() ? ':Gcd <BAR> RG<SPACE>' : ':RG<Space>'
 nnoremap <expr> <leader>f g:FugitiveIsGitDir() ? ':Gcd <BAR> Files<CR>' : ':Files<CR>'
 
 # Undotree
