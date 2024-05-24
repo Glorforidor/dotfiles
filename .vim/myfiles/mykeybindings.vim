@@ -87,6 +87,17 @@ augroup GO
     autocmd FileType go nnoremap <silent> <buffer> <F2> <Plug>(go-rename)
 augroup END
 
+augroup OHCAMLMYCAML
+    autocmd!
+    " # O binding my Caml
+    autocmd FileType ocaml nnoremap <silent> <buffer> <leader>r <Plug>(MerlinRename)
+    autocmd FileType ocaml nnoremap <silent> <buffer> <F2> <Plug>(MerlinRename)
+    autocmd FileType ocaml nnoremap <silent> <buffer> <leader>R <Plug>(MerlinRenameAppend)
+    autocmd Filetype ocaml nnoremap <silent> <buffer> <leader>* <Plug>(MerlinSearchOccurrencesForward)
+    autocmd Filetype ocaml nnoremap <silent> <buffer> <leader># <Plug>(MerlinSearchOccurrencesBackward)
+    autocmd FileType ocaml nnoremap <silent> <buffer> K :MerlinDocument<CR>
+augroup END
+
 # FZF
 nnoremap <leader>gf :GF<CR>
 nnoremap <leader>b :Buffers<CR>

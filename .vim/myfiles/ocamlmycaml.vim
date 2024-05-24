@@ -45,4 +45,6 @@ augroup OCAML
     autocmd!
     autocmd FileType ocaml setlocal balloonexpr=merlin#TypeAtBalloon()
 augroup END
+
+execute "helptags " . substitute(system('opam var share'),'\n$','','''') .  "/merlin/vim/doc"
 " au FileType ocaml setlocal balloonexpr=merlin#ShowTypeAtBalloon()
