@@ -31,6 +31,9 @@ augroup END
 # Initial setup
 set nocompatible
 set modifiable
+# Check:
+# https://github.com/vim/vim/commit/22105fd1fe0dcfe993b5c04c6ebe017a626116e3
+set cpoptions-=z
 
 # Display
 set title
