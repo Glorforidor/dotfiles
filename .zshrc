@@ -53,9 +53,10 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(docker encode64 git git-extras golang pip python rsync ruby rust web-search wd zsh-vi-mode tmux nmap pass vagrant ssh-agent gh gopass)
 
-source $ZSH/oh-my-zsh.sh
-
 # Plugin configuration
+
+# Source Oh My ZSH after plugin configuration
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 #
