@@ -97,9 +97,10 @@ fi
 
 # Setup FZF
 #
-export FZF_DEFAULT_OPTS='--bind ctrl-y:preview-up,ctrl-e:preview-down,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down,ctrl-/:toggle-preview'
+export FZF_DEFAULT_OPTS='--multi --bind alt-a:select-all,alt-d:deselect-all,ctrl-y:preview-up,ctrl-e:preview-down,ctrl-u:preview-half-page-up,ctrl-d:preview-half-page-down,ctrl-/:toggle-preview'
+
 if command -v bat &> /dev/null; then
-    alias fb='fzf --preview "bat --color=always --style=numbers --line-range=:500 {}"'
+    alias fb='fzf --preview "batcat --theme=gruvbox-dark --color=always --style=numbers --line-range=:500 {}"'
 else
     alias fb='fzf --preview "less {}"'
 fi
