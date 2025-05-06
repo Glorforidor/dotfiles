@@ -6,6 +6,30 @@ g:airline_right_sep = ''
 # Let airline show information about mode
 set noshowmode
 
+# Customize fzf colors to match your color scheme
+g:fzf_colors =
+            \ { 'fg':       ['fg', 'Normal'],
+            \ 'preview-fg': ['fg', 'Normal'],
+            \ 'bg':         ['bg', 'Normal'],
+            \ 'preview-bg': ['bg', 'Normal'],
+            \ 'query':      ['fg', 'Normal'],
+            \ 'hl':         ['fg', 'Comment'],
+            \ 'fg+':        ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+            \ 'bg+':        ['bg', 'CursorLine', 'CursorColumn'],
+            \ 'hl+':        ['fg', 'Statement'],
+            \ 'info':       ['fg', 'PreProc'],
+            \ 'border':     ['fg', 'Ignore'],
+            \ 'prompt':     ['fg', 'Conditional'],
+            \ 'pointer':    ['fg', 'Exception'],
+            \ 'marker':     ['fg', 'Keyword'],
+            \ 'spinner':    ['fg', 'Label'],
+            \ 'header':     ['fg', 'Comment'] }
+
+g:gruvbox_italic = 1
+g:gruvbox_bold = 1
+
+$BAT_THEME = 'gruvbox-dark'
+
 # Goyo and Limelight
 augroup GOYO
     autocmd!
@@ -49,6 +73,10 @@ g:go_term_reuse = 1
 
 # Vimtex
 g:vimtex_quickfix_open_on_warning = 0
+#
+# vim-dispatch
+g:dispatch_no_tmux_make = 1
+g:dispatch_no_tmux_start = 1
 
 # Ale
 # For go files disable the lsp feature in ale and let vim-go do this.
@@ -60,3 +88,9 @@ augroup END
 
 # wiki.vim
 g:wiki_root = '~/wiki'
+
+# Puppet
+augroup PUPPET
+    autocmd!
+    autocmd BufNewFile,BufRead *.pp set filetype=puppet
+augroup END

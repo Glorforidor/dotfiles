@@ -48,18 +48,17 @@ set ruler
 # Scroll
 set scrolloff=8
 
-# redraw
+# Redraw
 set lazyredraw
 set redrawtime=1000
 
-# split
+# Split
 set splitright
 set splitbelow
 
-# buffers
+# Buffers
 set hidden
 
-# Set numbering
 set number
 set relativenumber
 
@@ -68,9 +67,9 @@ syntax on
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set complete-=i
-set completeopt=longest,menuone,popup
+set completeopt=longest,menuone,popup,fuzzy
 
-# always set autoindenting on
+# Always set autoindenting on
 set autoindent
 
 # Round indent
@@ -108,9 +107,10 @@ set ignorecase
 set smartcase
 
 # Color
-g:rehash256 = 1
-set t_Co=256
+# g:rehash256 = 1
+# set t_Co=256
 set background=dark
+set termguicolors
 colorscheme gruvbox
 
 # Auto read/write file and change directory
@@ -119,7 +119,7 @@ set autowrite
 set autochdir
 
 # Swap file
-set updatetime=1000
+set updatetime=800
 if ! isdirectory($HOME .. "/.vim/swap")
     call mkdir($HOME .. "/.vim/swap", "p", 0o755)
 endif
@@ -177,3 +177,12 @@ g:maplocalleader = " "
 
 # A strange fix for a strange black background in Vim from Kitty?
 &t_ut = ''
+#
+###############################################################################
+#                                  FILETYPES                                  #
+###############################################################################
+
+augroup PUPPETFILETYPE
+    autocmd!
+    autocmd FileType puppet setlocal shiftwidth=2 tabstop=2
+augroup END
