@@ -67,7 +67,7 @@ syntax on
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 set complete-=i
-set completeopt=longest,menuone,popup,fuzzy
+set completeopt=longest,noselect,menuone,popup,fuzzy
 
 # Always set autoindenting on
 set autoindent
