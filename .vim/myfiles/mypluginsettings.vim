@@ -6,24 +6,24 @@ g:airline_right_sep = ''
 # Let airline show information about mode
 set noshowmode
 
-# Customize fzf colors to match your color scheme
-g:fzf_colors =
-            \ { 'fg':       ['fg', 'Normal'],
-            \ 'preview-fg': ['fg', 'Normal'],
-            \ 'bg':         ['bg', 'Normal'],
-            \ 'preview-bg': ['bg', 'Normal'],
-            \ 'query':      ['fg', 'Normal'],
-            \ 'hl':         ['fg', 'Comment'],
-            \ 'fg+':        ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-            \ 'bg+':        ['bg', 'CursorLine', 'CursorColumn'],
-            \ 'hl+':        ['fg', 'Statement'],
-            \ 'info':       ['fg', 'PreProc'],
-            \ 'border':     ['fg', 'Ignore'],
-            \ 'prompt':     ['fg', 'Conditional'],
-            \ 'pointer':    ['fg', 'Exception'],
-            \ 'marker':     ['fg', 'Keyword'],
-            \ 'spinner':    ['fg', 'Label'],
-            \ 'header':     ['fg', 'Comment'] }
+g:fzf_colors = {
+    'fg':       ['fg', 'Normal'],
+    'preview-fg': ['fg', 'Normal'],
+    'bg':         ['bg', 'Normal'],
+    'preview-bg': ['bg', 'Normal'],
+    'query':      ['fg', 'Normal'],
+    'hl':         ['fg', 'Comment'],
+    'fg+':        ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+    'bg+':        ['bg', 'CursorLine', 'CursorColumn'],
+    'hl+':        ['fg', 'Statement'],
+    'info':       ['fg', 'PreProc'],
+    'border':     ['fg', 'Ignore'],
+    'prompt':     ['fg', 'Conditional'],
+    'pointer':    ['fg', 'Exception'],
+    'marker':     ['fg', 'Keyword'],
+    'spinner':    ['fg', 'Label'],
+    'header':     ['fg', 'Comment'],
+}
 
 g:gruvbox_italic = 1
 g:gruvbox_bold = 1
@@ -82,9 +82,71 @@ g:dispatch_no_tmux_start = 1
 # For go files disable the lsp feature in ale and let vim-go do this.
 augroup ALE
     autocmd!
-    autocmd filetype go g:ale_go_golangci_lint_package = 1
-    autocmd filetype go g:ale_disable_lsp = 1
+
+    # For go files disable the lsp feature in ale and let vim-go do this.
+    autocmd filetype go b:ale_go_golangci_lint_package = 1
+    autocmd filetype go b:ale_disable_lsp = 1
+
+    autocmd filetype lua b:ale_hover_to_floating_preview = 1
+    autocmd filetype lua set omnifunc=ale#completion#OmniFunc
+    autocmd filetype lua b:ale_completion_enabled = 1
+
+    autocmd filetype elixir g:ale_elixir_elixir_ls_release = expand('~/src/elixir-ls/rel')
+    autocmd filetype elixir g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
+    autocmd filetype elixir b:ale_set_balloons = has('gui_running') ? 'hover' : 0
+    autocmd filetype elixir set omnifunc=ale#completion#OmniFunc
+
+    autocmd filetype odin set omnifunc=ale#completion#OmniFunc
+    autocmd filetype odin b:ale_completion_enabled = 1
 augroup END
+
+augroup OCAML
+    autocmd!
+    autocmd filetype ocaml setlocal balloonexpr=merlin#TypeAtBalloon()
+augroup END
+
+g:ale_linters = {
+    'elixir': [ 'elixir-ls' ],
+    'ocaml': [ 'merlin', 'ocamllsp' ],
+}
+
+def g:FormatOdin(buffer: any): dict<any>
+    return {
+        'command': 'odinfmt -stdin'
+    }
+enddef
+
+call ale#fix#registry#Add(
+    'odinfmt',
+    'FormatOdin',
+    ['odin'],
+    'odinfmt for odin',
+)
+
+g:ale_fixers = {
+    'lua': [ 'stylua' ],
+    'zig': [
+        'zigfmt',
+        'remove_trailing_lines',
+        'trim_whitespace',
+    ],
+    'elixir': [
+        'mix_format',
+        'remove_trailing_lines',
+        'trim_whitespace',
+    ],
+    'ocaml': [
+        'ocamlformat',
+        'remove_trailing_lines',
+        'trim_whitespace',
+    ],
+    'odin': [
+        'odinfmt',
+        'remove_trailing_lines',
+        'trim_whitespace',
+    ],
+}
+g:ale_fix_on_save = 1
 
 # wiki.vim
 g:wiki_root = '~/wiki'

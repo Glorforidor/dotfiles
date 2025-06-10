@@ -87,15 +87,50 @@ augroup GO
     autocmd FileType go nnoremap <silent> <buffer> <F2> <Plug>(go-rename)
 augroup END
 
-augroup OHCAMLMYCAML
+# Lua
+augroup LUA
     autocmd!
-    " # O binding my Caml
+    autocmd filetype lua nnoremap K <Plug>(ale_hover)
+augroup END
+
+# Elixir
+augroup ELIXIR
+    autocmd!
+    autocmd FileType elixir nnoremap <silent> <buffer> K <Plug>(ale_hover)
+    autocmd FileType elixir nnoremap <silent> <buffer> <F2> :ALERename<CR>
+augroup END
+
+# Odin
+augroup ODIN
+    autocmd!
+    autocmd FileType odin nnoremap <silent> <buffer> K <Plug>(ale_hover)
+    autocmd FileType odin nnoremap <silent> <buffer> gd <Plug>(ale_go_to_definition)
+    autocmd FileType odin nnoremap <silent> <buffer> gt <Plug>(ale_go_to_type_definition)
+    autocmd FileType odin nnoremap <silent> <buffer> gi <Plug>(ale_go_to_implementation)
+augroup END
+
+# Zig
+augroup ZIG
+    autocmd!
+    autocmd FileType zig inoremap <silent> <buffer> <C-X><C-O> <Plug>(ale_complete)
+    autocmd FileType zig nnoremap <silent> <buffer> <S-K> <Plug>(ale_hover)
+    autocmd FileType zig nnoremap <silent> <buffer> gd <Plug>(ale_go_to_definition)
+    autocmd FileType zig nnoremap <silent> <buffer> <leader>r :ALERename<CR>
+    autocmd FileType zig nnoremap <silent> <buffer> <F2> :ALERename<CR>
+augroup END
+
+augroup OCAMLBINDINGS
+    autocmd!
+    # O binding my Caml
     autocmd FileType ocaml nnoremap <silent> <buffer> <leader>r <Plug>(MerlinRename)
     autocmd FileType ocaml nnoremap <silent> <buffer> <F2> <Plug>(MerlinRename)
     autocmd FileType ocaml nnoremap <silent> <buffer> <leader>R <Plug>(MerlinRenameAppend)
     autocmd Filetype ocaml nnoremap <silent> <buffer> <leader>* <Plug>(MerlinSearchOccurrencesForward)
     autocmd Filetype ocaml nnoremap <silent> <buffer> <leader># <Plug>(MerlinSearchOccurrencesBackward)
     autocmd FileType ocaml nnoremap <silent> <buffer> K :MerlinDocument<CR>
+    autocmd FileType ocaml nnoremap <silent> <buffer> <leader>db :execute 'terminal ++close dune build' \| wincmd p<CR>
+    autocmd FileType ocaml nnoremap <silent> <buffer> <leader>dt :execute 'terminal ++close dune test --auto' \| wincmd p \| edit!<CR>
+    autocmd FileType ocaml nnoremap <silent> <buffer> <leader>df :execute 'terminal ++close dune fmt --auto' \| wincmd p \| edit!<CR>
 augroup END
 
 # FZF
