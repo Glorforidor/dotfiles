@@ -7,7 +7,7 @@ g:airline_right_sep = ''
 set noshowmode
 
 g:fzf_colors = {
-    'fg':       ['fg', 'Normal'],
+    'fg':         ['fg', 'Normal'],
     'preview-fg': ['fg', 'Normal'],
     'bg':         ['bg', 'Normal'],
     'preview-bg': ['bg', 'Normal'],

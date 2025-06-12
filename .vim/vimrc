@@ -1,5 +1,7 @@
 vim9script
 
+set nocompatible
+
 # vim-plug
 var data_dir = has('nvim') ? stdpath('data') .. '/site' : '~/.vim'
 if empty(glob(data_dir .. '/autoload/plug.vim'))
