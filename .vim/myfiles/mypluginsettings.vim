@@ -1,6 +1,9 @@
 vim9script
 
-# Airline
+###############################################################################
+#                                   Airline                                   #
+###############################################################################
+
 g:airline_left_sep = ''
 g:airline_right_sep = ''
 # Let airline show information about mode
@@ -25,12 +28,12 @@ g:fzf_colors = {
     'header':     ['fg', 'Comment'],
 }
 
-g:gruvbox_italic = 1
-g:gruvbox_bold = 1
-
 $BAT_THEME = 'gruvbox-dark'
 
-# Goyo and Limelight
+###############################################################################
+#                                    GoYo                                     #
+###############################################################################
+
 augroup GOYO
     autocmd!
     autocmd User GoyoEnter Limelight
@@ -39,17 +42,26 @@ augroup END
 g:limelight_conceal_ctermfg = 'gray'
 g:limelight_conceal_ctermfg = 240
 
-# jedi-vim
+###############################################################################
+#                                  jedi-vim                                   #
+###############################################################################
+
 g:jedi#completions_command = ''
 g:jedi#show_call_signatures = 0
 g:jedi#popup_on_dot = 0
 g:jedi#auto_close_doc = 0
 g:jedi#force_py_version = 3
 
-# rust.vim
+###############################################################################
+#                                  rust.vim                                   #
+###############################################################################
+
 g:rustfmt_autosave = 1
 
-# Vim-Go
+###############################################################################
+#                                   vim-go                                    #
+###############################################################################
+
 # turn of source proposel, since it is slowing down autocomplete
 g:go_gocode_propose_source = 0
 g:go_def_mode = 'gopls'
@@ -71,39 +83,56 @@ g:go_debug_windows = { 'vars': 'rightbelow 60vnew', 'stack': 'rightbelow 10new',
 g:go_term_enabled = 1
 g:go_term_reuse = 1
 
-# Vimtex
+###############################################################################
+#                                   vimtex                                    #
+###############################################################################
+
 g:vimtex_quickfix_open_on_warning = 0
-#
-# vim-dispatch
+
+###############################################################################
+#                                vim-dispatch                                 #
+###############################################################################
+
 g:dispatch_no_tmux_make = 1
 g:dispatch_no_tmux_start = 1
 
-# Ale
+###############################################################################
+#                                     ALE                                     #
+###############################################################################
+
 # For go files disable the lsp feature in ale and let vim-go do this.
 augroup ALE
     autocmd!
 
     # For go files disable the lsp feature in ale and let vim-go do this.
-    autocmd filetype go b:ale_go_golangci_lint_package = 1
-    autocmd filetype go b:ale_disable_lsp = 1
+    autocmd FileType go b:ale_go_golangci_lint_package = 1
+    autocmd FileType go b:ale_disable_lsp = 1
 
-    autocmd filetype lua b:ale_hover_to_floating_preview = 1
-    autocmd filetype lua set omnifunc=ale#completion#OmniFunc
-    autocmd filetype lua b:ale_completion_enabled = 1
+    autocmd FileType lua b:ale_hover_to_floating_preview = 1
 
-    autocmd filetype elixir g:ale_elixir_elixir_ls_release = expand('~/src/elixir-ls/rel')
-    autocmd filetype elixir g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
-    autocmd filetype elixir b:ale_set_balloons = has('gui_running') ? 'hover' : 0
-    autocmd filetype elixir set omnifunc=ale#completion#OmniFunc
+    # autocmd FileType elixir g:ale_elixir_elixir_ls_release = expand('~/src/elixir-ls/rel')
+    # autocmd FileType elixir g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
+    # autocmd FileType elixir b:ale_set_balloons = has('gui_running') ? 'hover' : 0
 
-    autocmd filetype odin set omnifunc=ale#completion#OmniFunc
-    autocmd filetype odin b:ale_completion_enabled = 1
+    autocmd FileType elixir b:ale_enabled = 0
+    autocmd FileType elixir GoToRoot()
+
+    # autocmd FileType elixir,lua,odin set omnifunc=ale#completion#OmniFunc
+    # autocmd FileType elixir,lua,odin b:ale_completion_enabled = 1
+
+    autocmd FileType lua,odin set omnifunc=ale#completion#OmniFunc
+    autocmd FileType lua,odin b:ale_completion_enabled = 1
 augroup END
 
-augroup OCAML
-    autocmd!
-    autocmd filetype ocaml setlocal balloonexpr=merlin#TypeAtBalloon()
-augroup END
+def GoToRoot()
+    # If the below git command fails then we are not in a git repository.
+    system("git rev-parse --is-inside-work-tree")
+    if v:shell_error == 0
+        var git_root = system("git rev-parse --show-toplevel")[ : -2]
+
+        execute 'cd' git_root
+    endif
+enddef
 
 g:ale_linters = {
     'elixir': [ 'elixir-ls' ],
@@ -148,10 +177,45 @@ g:ale_fixers = {
 }
 g:ale_fix_on_save = 1
 
-# wiki.vim
+###############################################################################
+#                                   vim-lsp                                   #
+###############################################################################
+
+g:lsp_document_code_action_signs_enabled = 0
+g:lsp_format_sync_timeout = 1000
+g:lsp_hover_ui = "preview"
+g:lsp_inlay_hints_enabled = 1
+g:lsp_use_native_client = 1
+
+if executable("elixir")
+    augroup LSP_EXPERT
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({ name: "expert", cmd: (server_info) => expand("~/.local/bin/expert_linux_amd64"), allowlist: ["elixir", "eelixir"] })
+        autocmd FileType elixir,eelixir setlocal omnifunc=lsp#complete
+
+        autocmd! BufWritePre *.ex,*.exs,*.heex call execute('LspDocumentFormatSync')
+    augroup END
+endif
+
+###############################################################################
+#                                   Merlin                                    #
+###############################################################################
+
+augroup OCAML
+    autocmd!
+    autocmd FileType ocaml setlocal balloonexpr=merlin#TypeAtBalloon()
+augroup END
+
+###############################################################################
+#                                  wiki.vim                                   #
+###############################################################################
+
 g:wiki_root = '~/wiki'
 
-# Puppet
+###############################################################################
+#                                   Puppet                                    #
+###############################################################################
+
 augroup PUPPET
     autocmd!
     autocmd BufNewFile,BufRead *.pp set filetype=puppet

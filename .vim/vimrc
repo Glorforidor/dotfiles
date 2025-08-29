@@ -10,40 +10,44 @@ if empty(glob(data_dir .. '/autoload/plug.vim'))
 endif
 
 g:plug#begin('~/.vim/bundle')
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'SirVer/ultisnips'
+Plug 'davidhalter/jedi-vim', { 'for': 'python' }
+Plug 'dense-analysis/ale'
+Plug 'elixir-editors/vim-elixir'
+Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'flazz/vim-colorschemes'
+Plug 'godlygeek/tabular'
+Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
-Plug 'scrooloose/nerdtree'
-Plug 'rust-lang/rust.vim'
-Plug 'godlygeek/tabular'
+Plug 'lervag/vimtex', { 'for': 'tex' }
+Plug 'lervag/wiki-ft.vim'
+Plug 'lervag/wiki.vim'
 Plug 'majutsushi/tagbar'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'mbbill/undotree'
+Plug 'ocaml/vim-ocaml'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'rodjek/vim-puppet'
+Plug 'rust-lang/rust.vim'
+Plug 'sainnhe/gruvbox-material'
+Plug 'scrooloose/nerdtree'
+Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-abolish'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-dadbod'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rhubarb'
 Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'flazz/vim-colorschemes'
-Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'Shougo/vimproc.vim', { 'do': 'make' }
-Plug 'lervag/vimtex', { 'for': 'tex' }
-Plug 'lervag/wiki.vim'
-Plug 'lervag/wiki-ft.vim'
-Plug 'sheerun/vim-polyglot'
-Plug 'dense-analysis/ale'
-Plug 'rodjek/vim-puppet'
-Plug 'ocaml/vim-ocaml'
+Plug 'ziglang/zig.vim'
 g:plug#end()
-
 
 source ~/.vim/myfiles/myvimsetup.vim
 source ~/.vim/myfiles/mypluginsettings.vim
@@ -51,3 +55,4 @@ source ~/.vim/myfiles/mykeybindings.vim
 source ~/.vim/myfiles/ocamlmycaml.vim
 
 runtime ftplugin/man.vim
+packadd! matchit

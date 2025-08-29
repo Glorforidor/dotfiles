@@ -1,5 +1,10 @@
 vim9script
 
+###############################################################################
+#                            General key bindings                             #
+###############################################################################
+
+
 # Remove pesky arrow keys but keep up and down for special use
 noremap <up> ddkP
 noremap <down> ddp
@@ -67,15 +72,23 @@ map Q gq
 # so that you can undo CTRL-U after inserting a line break.
 inoremap <C-U> <C-G>u<C-U>
 
-# Plugin bindings
+###############################################################################
+#                             Plugin key bindings                             #
+###############################################################################
 
-# jedi-vim keybindings
+###############################################################################
+#                                  jedi-vim                                   #
+###############################################################################
+
 augroup PYTHON
     autocmd!
     autocmd FileType python nnoremap <silent> <buffer> <F2> :call jedi#rename()<CR>
 augroup END
 
-# Vim-Go keybindings
+###############################################################################
+#                                   vim-Go                                    #
+###############################################################################
+
 augroup GO
     autocmd!
     autocmd FileType go nnoremap <silent> <buffer> <leader>gr <Plug>(go-run)
@@ -87,18 +100,26 @@ augroup GO
     autocmd FileType go nnoremap <silent> <buffer> <F2> <Plug>(go-rename)
 augroup END
 
+###############################################################################
+#                                     ALE                                     #
+###############################################################################
+
 # Lua
+
 augroup LUA
     autocmd!
     autocmd filetype lua nnoremap K <Plug>(ale_hover)
 augroup END
 
 # Elixir
-augroup ELIXIR
-    autocmd!
-    autocmd FileType elixir nnoremap <silent> <buffer> K <Plug>(ale_hover)
-    autocmd FileType elixir nnoremap <silent> <buffer> <F2> :ALERename<CR>
-augroup END
+# augroup ELIXIR
+#     autocmd!
+#     autocmd FileType elixir nnoremap <silent> <buffer> K <Plug>(ale_hover)
+#     autocmd FileType elixir nnoremap <silent> <buffer> <F2> :ALERename<CR>
+#     autocmd FileType elixir nnoremap <silent> <buffer> gd <Plug>(ale_go_to_definition)
+#     autocmd FileType elixir nnoremap <silent> <buffer> gt <Plug>(ale_go_to_type_definition)
+#     autocmd FileType elixir nnoremap <silent> <buffer> gi <Plug>(ale_go_to_implementation)
+# augroup END
 
 # Odin
 augroup ODIN
@@ -107,6 +128,8 @@ augroup ODIN
     autocmd FileType odin nnoremap <silent> <buffer> gd <Plug>(ale_go_to_definition)
     autocmd FileType odin nnoremap <silent> <buffer> gt <Plug>(ale_go_to_type_definition)
     autocmd FileType odin nnoremap <silent> <buffer> gi <Plug>(ale_go_to_implementation)
+    autocmd FileType odin nnoremap <silent> <buffer> <leader>r :ALERename<CR>
+    autocmd FileType odin nnoremap <silent> <buffer> <F2> :ALERename<CR>
 augroup END
 
 # Zig
@@ -118,6 +141,26 @@ augroup ZIG
     autocmd FileType zig nnoremap <silent> <buffer> <leader>r :ALERename<CR>
     autocmd FileType zig nnoremap <silent> <buffer> <F2> :ALERename<CR>
 augroup END
+
+###############################################################################
+#                                   vim-lsp                                   #
+###############################################################################
+
+augroup ELIXIR
+    autocmd!
+    autocmd FileType elixir nnoremap <silent> <buffer> K <Plug>(lsp-hover)
+    autocmd FileType elixir nnoremap <silent> <buffer> <leader>r <Plug>(lsp-rename)
+    autocmd FileType elixir nnoremap <silent> <buffer> gr <Plug>(lsp-references)
+    autocmd FileType elixir nnoremap <silent> <buffer> gd <Plug>(lsp-definition)
+    autocmd FileType elixir nnoremap <silent> <buffer> gt <Plug>(lsp-type-definition)
+    autocmd FileType elixir nnoremap <silent> <buffer> gi <Plug>(lsp-implementation)
+    autocmd FileType elixir nnoremap <silent> <buffer> <expr><c-j> lsp#scroll(+4)
+    autocmd FileType elixir nnoremap <silent> <buffer> <expr><c-k> lsp#scroll(-4)
+augroup END
+
+###############################################################################
+#                                   Merlin                                    #
+###############################################################################
 
 augroup OCAMLBINDINGS
     autocmd!
@@ -133,21 +176,33 @@ augroup OCAMLBINDINGS
     autocmd FileType ocaml nnoremap <silent> <buffer> <leader>df :execute 'terminal ++close dune fmt --auto' \| wincmd p \| edit!<CR>
 augroup END
 
-# FZF
+###############################################################################
+#                                     FZF                                     #
+###############################################################################
+
 nnoremap <leader>gf :GF<CR>
 nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>l :Lines<CR>
 
-# FZF anf Fugitive <3
+# FZF and Fugitive <3
 nnoremap <expr> <leader>a g:FugitiveIsGitDir() ? ':Gcd <BAR> RG<SPACE>' : ':RG<Space>'
 nnoremap <expr> <leader>f g:FugitiveIsGitDir() ? ':Gcd <BAR> Files<CR>' : ':Files<CR>'
 
-# Undotree
+###############################################################################
+#                                  Undotree                                   #
+###############################################################################
+
 nnoremap <F5> :UndotreeToggle<CR>
 
-# NerdTree
-# stolen from the vim conf ! :D
+###############################################################################
+#                                  Nerdtree                                   #
+###############################################################################
+
+# Stolen from the vim conf ! :D
 nnoremap <expr> <leader>k g:NERDTree.IsOpen() ? ':NERDTreeClose<CR>' : @% == '' ? ':NERDTree<CR>' : ':NERDTreeFind<CR>'
 
-# Tagbar
+###############################################################################
+#                                   Tagbar                                    #
+###############################################################################
+
 noremap <leader>t :TagbarToggle<CR>

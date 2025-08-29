@@ -59,6 +59,7 @@ set splitbelow
 # Buffers
 set hidden
 
+# Set numbering
 set number
 set relativenumber
 
@@ -66,7 +67,7 @@ set relativenumber
 syntax on
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
-set complete-=i
+# set complete-=i
 set completeopt=longest,noselect,menuone,popup,fuzzy
 
 # Always set autoindenting on
@@ -111,15 +112,19 @@ set smartcase
 # set t_Co=256
 set background=dark
 set termguicolors
-colorscheme gruvbox
+g:gruvbox_material_background = 'hard'
+g:gruvbox_material_better_performance = 1
+colorscheme gruvbox-material
 
 # Auto read/write file and change directory
 set autoread
 set autowrite
-set autochdir
+
+# This fails my lovely Elixir when set! :O
+set noautochdir
 
 # Swap file
-set updatetime=800
+set updatetime=500
 if ! isdirectory($HOME .. "/.vim/swap")
     call mkdir($HOME .. "/.vim/swap", "p", 0o755)
 endif
