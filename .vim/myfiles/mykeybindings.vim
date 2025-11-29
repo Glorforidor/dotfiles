@@ -180,13 +180,14 @@ augroup END
 #                                     FZF                                     #
 ###############################################################################
 
-nnoremap <leader>gf :GF<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>l :Lines<CR>
+nnoremap <silent> <leader>f :Files<CR>
+nnoremap <silent> <leader>gf :GF<CR>
+nnoremap <silent> <leader>b :Buffers<CR>
+nnoremap <silent> <leader>l :Lines<CR>
+nnoremap <silent> <leader>s :Snippets<CR>
 
 # FZF and Fugitive <3
-nnoremap <expr> <leader>a g:FugitiveIsGitDir() ? ':Gcd <BAR> RG<SPACE>' : ':RG<Space>'
-nnoremap <expr> <leader>f g:FugitiveIsGitDir() ? ':Gcd <BAR> Files<CR>' : ':Files<CR>'
+nnoremap <expr> <leader>a g:FugitiveIsGitDir() ? ':Gcd <BAR> RG<SPACE>' : ':RG<SPACE>'
 
 ###############################################################################
 #                                  Undotree                                   #

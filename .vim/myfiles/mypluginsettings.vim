@@ -28,7 +28,7 @@ g:fzf_colors = {
     'header':     ['fg', 'Comment'],
 }
 
-$BAT_THEME = 'gruvbox-dark'
+$BAT_THEME = 'gruvbox-material-dark'
 
 ###############################################################################
 #                                    GoYo                                     #
@@ -186,11 +186,12 @@ g:lsp_format_sync_timeout = 1000
 g:lsp_hover_ui = "preview"
 g:lsp_inlay_hints_enabled = 1
 g:lsp_use_native_client = 1
+g:lsp_text_edit_enabled = 0
 
 if executable("elixir")
     augroup LSP_EXPERT
         autocmd!
-        autocmd User lsp_setup call lsp#register_server({ name: "expert", cmd: (server_info) => expand("~/.local/bin/expert_linux_amd64"), allowlist: ["elixir", "eelixir"] })
+        autocmd User lsp_setup call lsp#register_server({ name: "expert", cmd: (server_info) => [expand("~/.local/bin/expert_linux_amd64"), "--stdio"], allowlist: ["elixir", "eelixir"] })
         autocmd FileType elixir,eelixir setlocal omnifunc=lsp#complete
 
         autocmd! BufWritePre *.ex,*.exs,*.heex call execute('LspDocumentFormatSync')
@@ -220,3 +221,9 @@ augroup PUPPET
     autocmd!
     autocmd BufNewFile,BufRead *.pp set filetype=puppet
 augroup END
+
+###############################################################################
+#                                  NERDtree                                   #
+###############################################################################
+
+g:NERDTreeHijackNetrw = 0
