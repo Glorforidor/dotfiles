@@ -127,6 +127,12 @@ require("lazy").setup(
     {
         "neovim/nvim-lspconfig",
         dependencies = {
+            "hrsh7th/nvim-cmp",
+            "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-cmdline",
+
             "williamboman/mason.nvim",
             "williamboman/mason-lspconfig.nvim",
             "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -140,11 +146,18 @@ require("lazy").setup(
             "b0o/SchemaStore.nvim",
         },
         config = function ()
-            local capabilities = nil
-            if pcall(require, "cmp_nvim_lsp") then
-                local capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
-                capabilities.textDocument.completion.completionItem.snippetSupport = true
-            end
+            require("conform").setup({
+                formatters_by_ft = {}
+            })
+
+            local cmp = require("cmp")
+            local cmp_lsp = require("cmp_nvim_lsp")
+            local capabilities = vim.tbl_deep_extend(
+                "force",
+                {},
+                vim.lsp.protocol.make_client_capabilities(),
+                cmp_lsp.default_capabilities()
+            )
 
             local servers = {
                 gopls = {
@@ -227,46 +240,32 @@ require("lazy").setup(
 
                 vim.lsp.enable(name)
             end
-        end,
-    },
-    {
-        "windwp/nvim-autopairs",
-        config = function()
-            require("nvim-autopairs").setup {
-                check_ts = true,
-            }
-        end
-    },
-    {
-        "folke/lazydev.nvim",
-        ft = "lua",
-    },
-    {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-            "hrsh7th/cmp-path",
-            "hrsh7th/cmp-buffer",
-            "L3MON4D3/LuaSnip",
-            "saadparwaiz1/cmp_luasnip",
-        },
-        opts = function(_, opts)
-            opts.sources = opts.sources or {}
-            table.insert(opts.sources, {
-                name = "lazydev",
-                gorup_index = 0,
+
+            cmp.setup({
+                completion = {
+                    autocomplete = false,
+                },
+                window = {
+                    completion = cmp.config.window.bordered(),
+                    documentation = cmp.config.window.bordered(),
+                },
+                sources = cmp.config.sources({
+                    { name = 'nvim_lsp' },
+                }, {
+                    { name = "buffer " },
+                }),
             })
-        end,
-        config = function()
-            local cmp = require("cmp")
-            local luasnip = require("luasnip")
-            local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
-            cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+            cmp.setup.cmdline()
+            cmp.setup.cmdline('/', {
+                mapping = cmp.mapping.preset.cmdline(),
+                sources = {
+                    { name = 'buffer' }
+                }
+            })
 
-            luasnip.config.setup {}
-
-            require("cmp").setup.cmdline(":", {
+            cmp.setup.cmdline(":", {
+                mapping = cmp.mapping.preset.cmdline(),
                 sources = cmp.config.sources({
                     { name = "path" },
                 }, {
@@ -274,6 +273,10 @@ require("lazy").setup(
                 }),
             })
         end,
+    },
+    {
+        "folke/lazydev.nvim",
+        ft = "lua",
     },
 })
 
@@ -369,120 +372,120 @@ autocmd("LspDetach", {
 -----------
 
 -- Lets modify
-vim.opt.modifiable = true
+vim.o.modifiable = true
 
-vim.opt.omnifunc = "syntaxcomplete#Complete"
+vim.o.omnifunc = "syntaxcomplete#Complete"
 
 -- Filetype, Syntax, and autocomplete
-vim.opt.syntax = "on"
+vim.o.syntax = "on"
 vim.cmd("filetype plugin indent on")
 vim.opt.complete = { ".", "w", "b", "u", "t" }
-vim.opt.completeopt = { "menuone", "noinsert", "noselect" }
+vim.opt.completeopt = { "longest", "noselect", "menuone", "popup", "fuzzy",  }
 
 -- Better stronger .. CMD?
-vim.opt.wildmenu = true
-vim.opt.wildmode = "full"
+vim.o.wildmenu = true
+vim.o.wildmode = "full"
 
 -- Display whaaat?
-vim.opt.title = true
-vim.opt.encoding = "utf-8"
-vim.opt.bomb = false
-vim.opt.showcmd = true
-vim.opt.showmatch = true
-vim.opt.cursorline = true
-vim.opt.ruler = true
+vim.o.title = true
+vim.o.encoding = "utf-8"
+vim.o.bomb = false
+vim.o.showcmd = true
+vim.o.showmatch = true
+vim.o.cursorline = true
+vim.o.ruler = true
 
 -- Colour
-vim.opt.termguicolors = true
-vim.opt.background = "dark"
+vim.o.termguicolors = true
+vim.o.background = "dark"
 vim.cmd.colorscheme("catppuccin")
 
 -- Da indent auto
-vim.opt.autoindent = true
-vim.opt.smartindent = true
+vim.o.autoindent = true
+vim.o.smartindent = true
 
 -- Round about
-vim.opt.shiftround = true
+vim.o.shiftround = true
 
 -- MaTab and MaSpaces
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
-vim.opt.smarttab = true
-vim.opt.expandtab = true
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 4
+vim.o.smarttab = true
+vim.o.expandtab = true
 
 -- Is this the END?
-vim.opt.eol = true
+vim.o.eol = true
 
 -- Oh my history
-vim.opt.history = 10000
+vim.o.history = 10000
 
 -- Undo me daddy
-vim.opt.undolevels = 1000
-vim.opt.undofile = true
+vim.o.undolevels = 1000
+vim.o.undofile = true
 
 -- Auto read/write file and change directory
-vim.opt.autoread = true
-vim.opt.autowrite = true
-vim.opt.autochdir = true
+vim.o.autoread = true
+vim.o.autowrite = true
+vim.o.autochdir = false
 
 -- Make search pretty again
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+vim.o.hlsearch = true
+vim.o.incsearch = true
+vim.o.ignorecase = true
+vim.o.smartcase = true
 
 -- Scroll
-vim.opt.scrolloff = 8
+vim.o.scrolloff = 8
 
 -- Redraw
-vim.opt.lazyredraw = true
-vim.opt.redrawtime = 1000
+vim.o.lazyredraw = true
+vim.o.redrawtime = 1000
 
 -- Split
-vim.opt.splitright = true
-vim.opt.splitbelow = true
+vim.o.splitright = true
+vim.o.splitbelow = true
 
 -- Allow hidden buffers
-vim.opt.hidden = true
+vim.o.hidden = true
 
 -- Draw numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
+vim.o.number = true
+vim.o.relativenumber = true
 
 -- No swap and backup for me
-vim.opt.swapfile = false
-vim.opt.backup = false
+vim.o.swapfile = false
+vim.o.backup = false
 
 -- hmm
 -- vim.opt.shortmess:append("c")
 
 -- Update woop woop
-vim.opt.updatetime = 50
+vim.o.updatetime = 50
 
 -- Textwidth
-vim.opt.textwidth = 79
+vim.o.textwidth = 79
 
 -- Yummy! WRAP
-vim.opt.wrap = true
-vim.opt.linebreak = true
-vim.opt.showbreak = "> " -- MAYBE gut
+vim.o.wrap = true
+vim.o.linebreak = true
+vim.o.showbreak = "> " -- MAYBE gut
 
 -- My Baaaaaack
 vim.opt.backspace = {"indent", "eol", "nostop"}
 
 -- Show me da status
-vim.opt.laststatus = 2
+vim.o.laststatus = 2
 
 -- Red goes faster
-vim.opt.ttyfast = true
+vim.o.ttyfast = true
 
 -- Pesky spaces
-vim.opt.joinspaces = false
+vim.o.joinspaces = false
 
 -- You are on da bench
-vim.opt.ttimeout = true
-vim.opt.ttimeoutlen = 100
+vim.o.ttimeout = true
+vim.o.ttimeoutlen = 100
 
 -- ThePrimeagen that beautiful man :D
 
@@ -529,8 +532,8 @@ vim.keymap.set("n", "<F3>", "<cmd>set hlsearch!<cr>", { silent = true})
 
 local wrap_enabled = false
 local function toggle_wrap()
-    vim.opt.wrap = true
-    vim.opt.list = false
+    vim.o.wrap = true
+    vim.o.list = false
 
     if wrap_enabled then
         vim.opt.linebreak = false
