@@ -1,7 +1,10 @@
+@import "macchiato.css";
+
 * {
     /* `otf-font-awesome` is required to be installed for icons */
-    font-family: IntoneMono Nerd Font, FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "IntoneMono Nerd Font", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 16px;
+    color: @text;
 }
 
 window#waybar {
@@ -16,22 +19,8 @@ window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
-window#waybar.empty {
-    background-color: transparent;
-}
-window#waybar.solo {
-    background-color: #FFFFFF;
-}
-*/
-
 window#waybar.termite {
     background-color: #3F3F3F;
-}
-
-window#waybar.chromium {
-    background-color: #000000;
-    border: none;
 }
 
 button {
@@ -49,9 +38,9 @@ button:hover {
 }
 
 /* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
-}
+/* #pulseaudio:hover { */
+/*     background-color: #a37800; */
+/* } */
 
 #workspaces button {
     padding: 0 5px;
@@ -111,7 +100,7 @@ button:hover {
 }
 
 #clock {
-    background-color: #64727D;
+    background-color: transparent;
 }
 
 @keyframes blink {
@@ -122,22 +111,21 @@ button:hover {
 }
 
 #power-profiles-daemon {
-    padding-right: 15px;
 }
 
 #power-profiles-daemon.performance {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: @red;
+    color: @base;
 }
 
 #power-profiles-daemon.balanced {
-    background-color: #2980b9;
-    color: #ffffff;
+    background-color: @blue;
+    color: @base;
 }
 
 #power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
-    color: #000000;
+    background-color: @green;
+    color: @base;
 }
 
 label:focus {
@@ -145,20 +133,23 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
-    color: #000000;
+    background-color: @green;
+    color: @base;
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: @mauve;
+    color: @base;
 }
 
 #disk {
-    background-color: #964B00;
+    background-color: @red;
+    color: @base;
 }
 
 #network {
-    background-color: #2980b9;
+    background-color: @teal;
+    color: @base;
 }
 
 #network.disconnected {
@@ -166,8 +157,8 @@ label:focus {
 }
 
 #pulseaudio {
-    background-color: #f1c40f;
-    color: #000000;
+    background-color: @yellow;
+    color: @base;
 }
 
 #pulseaudio.muted {
@@ -184,14 +175,14 @@ label:focus {
     background-color: #f53c3c;
 }
 
+#custom-power {
+    background-color: @base;
+}
+
 #custom-media {
     background-color: #66cc99;
     color: #2a5c45;
     min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-    background-color: #66cc99;
 }
 
 #custom-media.custom-vlc {
@@ -207,7 +198,7 @@ label:focus {
 }
 
 #tray {
-    background-color: #2980b9;
+    background-color: @base;
 }
 
 #tray > .passive {
@@ -246,15 +237,14 @@ label:focus {
 }
 
 #language {
-    background: #00b093;
-    color: #740864;
+    background-color: @green;
+    color: @base;
     padding: 0 5px;
-    margin: 0 5px;
     min-width: 16px;
 }
 
 #keyboard-state {
-    background: #97e1ad;
+    background-color: #97e1ad;
     color: #000000;
     padding: 0 0px;
     margin: 0 5px;
