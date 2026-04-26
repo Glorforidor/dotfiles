@@ -101,7 +101,7 @@
         "tooltip-format": "<tt><big>{calendar}</big></tt>",
         "calendar": {
             "iso8601": true,
-            "mode": "year",
+            "mode": "month",
             "mode-mon-col": 3,
             "weeks-pos": "left",
             "format": {
@@ -111,6 +111,9 @@
                 "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
                 "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
             }
+        },
+        "actions": {
+            "on-click": "mode",
         }
     },
     "cpu": {
