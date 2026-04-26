@@ -111,6 +111,7 @@ button:hover {
 }
 
 #power-profiles-daemon {
+    min-width: 20px;
 }
 
 #power-profiles-daemon.performance {
