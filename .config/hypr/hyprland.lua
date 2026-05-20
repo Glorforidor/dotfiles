@@ -247,7 +247,7 @@ hl.define_submap("resize", function()
     hl.bind("K", hl.dsp.window.resize({ x = 0, y = -10, relative = true}), { repeating = true })
     hl.bind("J", hl.dsp.window.resize({ x = 10, y = 10, relative = true}), { repeating = true })
 
-    hl.bind(mainMod .. " + R", hl.dsp.submap("reset"))
+    hl.bind("escape", hl.dsp.submap("reset"))
 end)
 
 -- hl.bind("catchall", hl.dsp.submap("reset"))
