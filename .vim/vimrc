@@ -16,7 +16,6 @@ Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'dense-analysis/ale'
 Plug 'elixir-editors/vim-elixir'
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'flazz/vim-colorschemes'
 Plug 'godlygeek/tabular'
 Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -32,7 +31,6 @@ Plug 'ocaml/vim-ocaml'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'rodjek/vim-puppet'
 Plug 'rust-lang/rust.vim'
-Plug 'sainnhe/gruvbox-material'
 Plug 'scrooloose/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-abolish'
@@ -47,6 +45,7 @@ Plug 'tpope/vim-surround'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ziglang/zig.vim'
+Plug 'catppuccin/vim', { 'as': 'catppuccin', 'branch': 'main' }
 g:plug#end()
 
 source ~/.vim/myfiles/myvimsetup.vim
