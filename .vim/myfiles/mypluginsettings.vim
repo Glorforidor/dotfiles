@@ -28,7 +28,7 @@ g:fzf_colors = {
     'header':     ['fg', 'Comment'],
 }
 
-$BAT_THEME = 'gruvbox-material-dark'
+$BAT_THEME = 'Catppuccin Macchiato'
 
 ###############################################################################
 #                                    GoYo                                     #
@@ -173,7 +173,6 @@ g:lsp_hover_ui = "preview"
 g:lsp_inlay_hints_enabled = 1
 g:lsp_use_native_client = 1
 g:lsp_text_edit_enabled = 0
-
 
 ###############################################################################
 #                                   Merlin                                    #

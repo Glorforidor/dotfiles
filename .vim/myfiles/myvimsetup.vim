@@ -108,13 +108,9 @@ set ignorecase
 set smartcase
 
 # Color
-# g:rehash256 = 1
-# set t_Co=256
-set background=dark
 set termguicolors
-g:gruvbox_material_background = 'hard'
-g:gruvbox_material_better_performance = 1
-colorscheme gruvbox-material
+set background=dark
+colorscheme catppuccin_macchiato
 
 # Auto read/write file and change directory
 set autoread
