@@ -104,24 +104,11 @@ augroup END
 #                                     ALE                                     #
 ###############################################################################
 
-# Lua
-
 augroup LUA
     autocmd!
     autocmd filetype lua nnoremap K <Plug>(ale_hover)
 augroup END
 
-# Elixir
-# augroup ELIXIR
-#     autocmd!
-#     autocmd FileType elixir nnoremap <silent> <buffer> K <Plug>(ale_hover)
-#     autocmd FileType elixir nnoremap <silent> <buffer> <F2> :ALERename<CR>
-#     autocmd FileType elixir nnoremap <silent> <buffer> gd <Plug>(ale_go_to_definition)
-#     autocmd FileType elixir nnoremap <silent> <buffer> gt <Plug>(ale_go_to_type_definition)
-#     autocmd FileType elixir nnoremap <silent> <buffer> gi <Plug>(ale_go_to_implementation)
-# augroup END
-
-# Odin
 augroup ODIN
     autocmd!
     autocmd FileType odin nnoremap <silent> <buffer> K <Plug>(ale_hover)
@@ -132,7 +119,6 @@ augroup ODIN
     autocmd FileType odin nnoremap <silent> <buffer> <F2> :ALERename<CR>
 augroup END
 
-# Zig
 augroup ZIG
     autocmd!
     autocmd FileType zig inoremap <silent> <buffer> <C-X><C-O> <Plug>(ale_complete)
@@ -142,21 +128,19 @@ augroup ZIG
     autocmd FileType zig nnoremap <silent> <buffer> <F2> :ALERename<CR>
 augroup END
 
+augroup ELIXIR
+    autocmd!
+    autocmd FileType elixir nnoremap <silent> <buffer> K <Plug>(ale_hover)
+    autocmd FileType elixir nnoremap <silent> <buffer> <leader>r :ALERename<CR>
+    autocmd FileType elixir nnoremap <silent> <buffer> gr <Plug>(lsp-references)
+    autocmd FileType elixir nnoremap <silent> <buffer> gd <Plug>(ale_go_to_definition)
+    autocmd FileType elixir nnoremap <silent> <buffer> gt <Plug>(ale_go_to_type_definition)
+    autocmd FileType elixir nnoremap <silent> <buffer> gi <Plug>(ale_go_to_implementation)
+augroup END
+
 ###############################################################################
 #                                   vim-lsp                                   #
 ###############################################################################
-
-augroup ELIXIR
-    autocmd!
-    autocmd FileType elixir nnoremap <silent> <buffer> K <Plug>(lsp-hover)
-    autocmd FileType elixir nnoremap <silent> <buffer> <leader>r <Plug>(lsp-rename)
-    autocmd FileType elixir nnoremap <silent> <buffer> gr <Plug>(lsp-references)
-    autocmd FileType elixir nnoremap <silent> <buffer> gd <Plug>(lsp-definition)
-    autocmd FileType elixir nnoremap <silent> <buffer> gt <Plug>(lsp-type-definition)
-    autocmd FileType elixir nnoremap <silent> <buffer> gi <Plug>(lsp-implementation)
-    autocmd FileType elixir nnoremap <silent> <buffer> <expr><c-j> lsp#scroll(+4)
-    autocmd FileType elixir nnoremap <silent> <buffer> <expr><c-k> lsp#scroll(-4)
-augroup END
 
 ###############################################################################
 #                                   Merlin                                    #

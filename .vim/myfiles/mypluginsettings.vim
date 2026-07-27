@@ -110,32 +110,18 @@ augroup ALE
 
     autocmd FileType lua b:ale_hover_to_floating_preview = 1
 
-    # autocmd FileType elixir g:ale_elixir_elixir_ls_release = expand('~/src/elixir-ls/rel')
-    # autocmd FileType elixir g:ale_elixir_elixir_ls_config = {'elixirLS': {'dialyzerEnabled': v:false}}
-    # autocmd FileType elixir b:ale_set_balloons = has('gui_running') ? 'hover' : 0
-
-    autocmd FileType elixir b:ale_enabled = 0
-    autocmd FileType elixir GoToRoot()
-
-    # autocmd FileType elixir,lua,odin set omnifunc=ale#completion#OmniFunc
-    # autocmd FileType elixir,lua,odin b:ale_completion_enabled = 1
+    autocmd FileType elixir set omnifunc=ale#completion#OmniFunc
+    autocmd FileType elixir b:ale_enabled = 1
+    autocmd FileType elixir b:ale_completion_enabled = 1
+    autocmd FileType elixir b:ale_set_balloons = has('gui_running') ? 'hover' : 0
+    autocmd FileType elixir b:ale_elixir_expert_executable = expand('~/.local/bin/expert_wrapper.sh')
 
     autocmd FileType lua,odin set omnifunc=ale#completion#OmniFunc
     autocmd FileType lua,odin b:ale_completion_enabled = 1
 augroup END
 
-def GoToRoot()
-    # If the below git command fails then we are not in a git repository.
-    system("git rev-parse --is-inside-work-tree")
-    if v:shell_error == 0
-        var git_root = system("git rev-parse --show-toplevel")[ : -2]
-
-        execute 'cd' git_root
-    endif
-enddef
-
 g:ale_linters = {
-    'elixir': [ 'elixir-ls' ],
+    'elixir': [ 'expert' ],
     'ocaml': [ 'merlin', 'ocamllsp' ],
 }
 
@@ -188,15 +174,6 @@ g:lsp_inlay_hints_enabled = 1
 g:lsp_use_native_client = 1
 g:lsp_text_edit_enabled = 0
 
-if executable("elixir")
-    augroup LSP_EXPERT
-        autocmd!
-        autocmd User lsp_setup call lsp#register_server({ name: "expert", cmd: (server_info) => [expand("~/.local/bin/expert_linux_amd64"), "--stdio"], allowlist: ["elixir", "eelixir"] })
-        autocmd FileType elixir,eelixir setlocal omnifunc=lsp#complete
-
-        autocmd! BufWritePre *.ex,*.exs,*.heex call execute('LspDocumentFormatSync')
-    augroup END
-endif
 
 ###############################################################################
 #                                   Merlin                                    #
