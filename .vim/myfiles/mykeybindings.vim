@@ -77,15 +77,6 @@ inoremap <C-U> <C-G>u<C-U>
 ###############################################################################
 
 ###############################################################################
-#                                  jedi-vim                                   #
-###############################################################################
-
-augroup PYTHON
-    autocmd!
-    autocmd FileType python nnoremap <silent> <buffer> <F2> :call jedi#rename()<CR>
-augroup END
-
-###############################################################################
 #                                   vim-Go                                    #
 ###############################################################################
 
@@ -141,6 +132,18 @@ augroup END
 ###############################################################################
 #                                   vim-lsp                                   #
 ###############################################################################
+
+augroup PYTHON
+    autocmd!
+    autocmd FileType python nnoremap <silent> <buffer> K <Plug>(lsp-hover)
+    autocmd FileType python nnoremap <silent> <buffer> <leader>r <Plug>(lsp-rename)
+    autocmd FileType python nnoremap <silent> <buffer> gr <Plug>(lsp-references)
+    autocmd FileType python nnoremap <silent> <buffer> gd <Plug>(lsp-definition)
+    # autocmd FileType python nnoremap <silent> <buffer> gt <Plug>(lsp-type-definition)
+    autocmd FileType python nnoremap <silent> <buffer> gi <Plug>(lsp-implementation)
+    autocmd FileType python nnoremap <silent> <buffer> <expr><c-j> lsp#scroll(+4)
+    autocmd FileType python nnoremap <silent> <buffer> <expr><c-k> lsp#scroll(-4)
+augroup END
 
 ###############################################################################
 #                                   Merlin                                    #

@@ -43,16 +43,6 @@ g:limelight_conceal_ctermfg = 'gray'
 g:limelight_conceal_ctermfg = 240
 
 ###############################################################################
-#                                  jedi-vim                                   #
-###############################################################################
-
-g:jedi#completions_command = ''
-g:jedi#show_call_signatures = 0
-g:jedi#popup_on_dot = 0
-g:jedi#auto_close_doc = 0
-g:jedi#force_py_version = 3
-
-###############################################################################
 #                                  rust.vim                                   #
 ###############################################################################
 
@@ -172,7 +162,19 @@ g:lsp_format_sync_timeout = 1000
 g:lsp_hover_ui = "preview"
 g:lsp_inlay_hints_enabled = 1
 g:lsp_use_native_client = 1
+g:lsp_work_done_progress_enabled = 1
 g:lsp_text_edit_enabled = 0
+g:lsp_use_lua = has('nvim-0.4.0') || (has('lua') && has('patch-8.2.0775'))
+g:lsp_format_sync_timeout = 1000
+
+if executable("zuban")
+    augroup LSP_ZUBAN
+        autocmd!
+        autocmd User lsp_setup call lsp#register_server({ name: "Zuban", cmd: (server_info) => ["zuban", "server"], allowlist: ["python"] })
+        autocmd FileType python setlocal omnifunc=lsp#complete
+        autocmd! BufWritePre *.py call execute('LspDocumentFormatSync')
+    augroup END
+endif
 
 ###############################################################################
 #                                   Merlin                                    #

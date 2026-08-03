@@ -12,7 +12,6 @@ endif
 g:plug#begin('~/.vim/bundle')
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'SirVer/ultisnips'
-Plug 'davidhalter/jedi-vim', { 'for': 'python' }
 Plug 'dense-analysis/ale'
 Plug 'elixir-editors/vim-elixir'
 Plug 'fatih/vim-go', { 'for': 'go' }
