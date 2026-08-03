@@ -6,6 +6,8 @@ vim9script
 
 g:airline_left_sep = ''
 g:airline_right_sep = ''
+g:airline_theme = 'catppuccin_macchiato'
+
 # Let airline show information about mode
 set noshowmode
 
